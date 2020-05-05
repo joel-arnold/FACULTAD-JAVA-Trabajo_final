@@ -23,7 +23,7 @@
          <i class="fas fa-users-cog"></i> Panel de administración
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fas fa-window-restore"></i> Privilegios</a>
+          <a class="dropdown-item" href="privilegioAdmin.jsp"><i class="fas fa-window-restore"></i> Privilegios</a>
           <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
         </div>
       </li>

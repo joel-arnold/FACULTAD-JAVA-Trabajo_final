@@ -11,9 +11,3 @@ function configModificar(id, descripcion, porcentaje) {
 	inputDescripcion.val(descripcion);
 	inputPorcentaje.val(porcentaje);
 }
-
-//Al cargar la página, asignar evento al botón de notificaciones para mostrarlas.
-$('.toast').toast({ delay: 2000 });
-$('#btn-notif').on('click', function() {
-    $('.toast').toast('show');
-});

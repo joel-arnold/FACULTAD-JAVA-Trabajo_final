@@ -4,9 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import entidades.Persona;
 import extras.Excepcion;
 
 public class DatosPersona {
+	
 
 	public int buscarIDUsuario(String usuario, String contrasena) throws SQLException, Excepcion {
 		ResultSet resultado = null;

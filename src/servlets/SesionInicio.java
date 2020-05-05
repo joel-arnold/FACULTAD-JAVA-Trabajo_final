@@ -46,7 +46,7 @@ public class SesionInicio extends HttpServlet {
 			// PROBANDO: System.out.println("Id usuario: " + idUsuario);
 			// PROBANDO: System.out.println("Privilegio: " + privilegio);
 			
-			if(privilegio.equalsIgnoreCase("cliente")) {
+			if(privilegio.equalsIgnoreCase("cliente") || privilegio.equalsIgnoreCase("empleado")) {
 				ControladorCliente cc = new ControladorCliente();
 				Cliente cliente = new Cliente();
 				cliente = cc.buscarPorIDUsuario(idUsuario);
