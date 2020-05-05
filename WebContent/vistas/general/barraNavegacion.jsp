@@ -31,11 +31,21 @@
     <!-- Button trigger modal -->
     <% if(session.getAttribute("nombre") == null){ %>
 		<button type="button" class="btn btn-primary bg-dark text-white" data-toggle="modal" data-target="#modalIngreso">
-		  Iniciar sesión
+		  <i class="fas fa-sign-in-alt"></i> Iniciar sesión
 		</button>
+		&nbsp;&nbsp;
+		<a href="registroUsuario.jsp">
+			<button type="button" class="btn btn-primary bg-info text-white">
+				<i class="fas fa-user-plus"></i> Registrarse
+			</button>
+		</a>
 	<% } else{ %>
+		<a class="nav-item nav-link text-white" href="#">
+			<% out.print(session.getAttribute("nombre")); out.print(" "); out.print(session.getAttribute("apellido"));  %>
+		</a>
+		&nbsp;&nbsp;
 		<form action="SesionCierre" method="post">
-			<button type="submit" class="btn btn-primary bg-dark text-white">Cerrar sesión</button>
+			<button type="submit" class="btn btn-primary bg-dark text-white"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
 		</form>
 	<% } %>
   </div>

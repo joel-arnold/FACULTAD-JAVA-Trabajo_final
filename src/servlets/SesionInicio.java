@@ -30,7 +30,7 @@ public class SesionInicio extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
-		//Persona persona = new Persona();
+		// Persona persona = new Persona();
 		ControladorPersona cp = new ControladorPersona();
 		int idUsuario;
 		String privilegio = null;
@@ -38,25 +38,36 @@ public class SesionInicio extends HttpServlet {
 		try {
 			String usuario = request.getParameter("usuario");
 			String contrasena = request.getParameter("contrasena");
-			// PROBANDO: System.out.println("EL USUARIO s: " + usuario);
-			// PROBANDO: System.out.println("LA CONTRASEÑA s: " + contrasena);
+			// System.out.println("EL USUARIO s: " + usuario);
+			// System.out.println("LA CONTRASEÑA s: " + contrasena);
 
 			idUsuario = cp.buscarIDUsuario(usuario, contrasena);
 			privilegio = cp.buscarPrivilegio(idUsuario);
-			// PROBANDO: System.out.println("Id usuario: " + idUsuario);
-			// PROBANDO: System.out.println("Privilegio: " + privilegio);
-			
-			if(privilegio.equalsIgnoreCase("cliente") || privilegio.equalsIgnoreCase("empleado")) {
-				ControladorCliente cc = new ControladorCliente();
-				Cliente cliente = new Cliente();
-				cliente = cc.buscarPorIDUsuario(idUsuario);
-				sesion.setAttribute("nombre", cliente.getNombre());
-				sesion.setAttribute("apellido", cliente.getApellido());
-				sesion.setAttribute("telefono", cliente.getTelefono());
-				response.sendRedirect("inicio.jsp");
+			// System.out.println("Id usuario: " + idUsuario);
+			// System.out.println("Privilegio: " + privilegio);
+
+			if (privilegio != null) {
+				if (privilegio.equalsIgnoreCase("CLIENTE")) {
+					ControladorCliente cc = new ControladorCliente();
+					Cliente cliente = new Cliente();
+					cliente = cc.buscarPorIDUsuario(idUsuario);
+					sesion.setAttribute("nombre", cliente.getNombre());
+					sesion.setAttribute("apellido", cliente.getApellido());
+					sesion.setAttribute("telefono", cliente.getTelefono());
+					response.sendRedirect("inicio.jsp");
+				} else if (privilegio.equalsIgnoreCase("EMPLEADO") || privilegio.equalsIgnoreCase("SUPERUSUARIO")
+						|| privilegio.equalsIgnoreCase("ADMINISTRADOR")) {
+					ControladorEmpleado ce = new ControladorEmpleado();
+					Empleado empleado = new Empleado();
+					empleado = ce.buscarPorIDUsuario(idUsuario);
+					sesion.setAttribute("nombre", empleado.getNombre());
+					sesion.setAttribute("apellido", empleado.getApellido());
+					sesion.setAttribute("telefono", empleado.getTelefono());
+					response.sendRedirect("inicio.jsp");
+				}
 			} else {
 				sesion.setAttribute("huboError", "si");
-				sesion.setAttribute("mensajeError", "Existe algún problema con sus privilegios de acceso.");
+				sesion.setAttribute("mensajeError", "Usuario inexistente o contraseña incorrecta.");
 				response.sendRedirect("error.jsp");
 			}
 		} catch (SQLException excepcion) {
@@ -69,5 +80,5 @@ public class SesionInicio extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		}
 	}
-	
+
 }

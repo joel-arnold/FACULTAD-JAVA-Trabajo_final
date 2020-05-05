@@ -11,15 +11,15 @@ import entidades.TipoCliente;
 import extras.Excepcion;
 
 public class DatosEmpleado {
-	
+
 	public ArrayList<Empleado> buscarTodos() throws SQLException, Excepcion {
 		ResultSet resultado = null;
 		PreparedStatement sentenciaSQL = null;
 		ArrayList<Empleado> listado = new ArrayList<Empleado>();
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM empleados e LEFT JOIN usuarios u ON e.usuario = u.id");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("SELECT * FROM empleados e LEFT JOIN usuarios u ON e.usuario = u.id");
 			resultado = sentenciaSQL.executeQuery();
 
 			while (resultado.next()) {
@@ -66,17 +66,15 @@ public class DatosEmpleado {
 			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
 		}
 		return listado;
-	}	
+	}
 
 	public Empleado buscarPorIDUsuario(int id) throws SQLException, Excepcion {
 		ResultSet resultado = null;
 		PreparedStatement sentenciaSQL = null;
 		Empleado empleado = null;
-
 		try {
 			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM empleados e LEFT JOIN usuarios u ON e.usuario = u.id " +
-					"WHERE u.id = ?");
+					"SELECT * FROM empleados e LEFT JOIN usuarios u ON e.usuario = u.id " + "WHERE u.id = ?");
 			sentenciaSQL.setInt(1, id);
 			resultado = sentenciaSQL.executeQuery();
 
@@ -85,7 +83,7 @@ public class DatosEmpleado {
 				empleado.setId(resultado.getInt("id"));
 				empleado.setNombre(resultado.getString("nombre"));
 				empleado.setApellido(resultado.getString("apellido"));
-				empleado.setTipoDocumento(resultado.getString("tipoDoc"));
+				empleado.setTipoDocumento(resultado.getString("tipoDocumento"));
 				empleado.setDocumento(resultado.getString("documento"));
 				empleado.setDomicilioCalle(resultado.getString("domicilioCalle"));
 				empleado.setDomicilioNumero(resultado.getString("domicilioNumero"));
@@ -124,13 +122,13 @@ public class DatosEmpleado {
 		}
 		return empleado;
 	}
-	
+
 	public void modificarPrivilegio(String nombreUsuario, String privilegio) throws SQLException, Excepcion {
 		PreparedStatement sentenciaSQL = null;
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"UPDATE usuarios SET privilegio = ? WHERE nombreUsuario = ?");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("UPDATE usuarios SET privilegio = ? WHERE nombreUsuario = ?");
 			sentenciaSQL.setString(1, privilegio);
 			sentenciaSQL.setString(2, nombreUsuario);
 			sentenciaSQL.executeUpdate();
