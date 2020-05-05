@@ -8,11 +8,13 @@
 	  <h1 class="display-4">Ocurrió un error...</h1>
 	  <br>
 	  <h3><% out.print(session.getAttribute("mensajeError")); %></h3>
+	  <% if(session.getAttribute("causaError") != null) {
+	  %>
 	  <br>
 	  <p class="font-italic"><h5>Informale lo siguiente al administrador del sistema para que pueda ayudarte:</h5>
 	  	<% out.print(session.getAttribute("causaError")); %>
 	  </p>
-	  <% } %>
+	  <% } } %>
 	  <br>     
        <a href="javascript:window.history.back();">
   		<button type="button" class="btn btn-primary">

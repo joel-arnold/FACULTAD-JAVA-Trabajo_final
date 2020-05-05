@@ -43,7 +43,8 @@ public class TcElimina extends HttpServlet {
 			response.sendRedirect("error.jsp");
 		} catch (Excepcion e) {
 			sesion.setAttribute("huboError", "si");
-			sesion.setAttribute("mensajeError", e.getErrorOficialPila().toString());
+			sesion.setAttribute("mensajeError", e.getMensajeDeError());
+			sesion.setAttribute("causaError", e.getErrorOficialPila().toString());
 			response.sendRedirect("error.jsp");
 		}
 	}

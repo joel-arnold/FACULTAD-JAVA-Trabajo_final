@@ -68,6 +68,7 @@ public class SesionInicio extends HttpServlet {
 			} else {
 				sesion.setAttribute("huboError", "si");
 				sesion.setAttribute("mensajeError", "Usuario inexistente o contraseña incorrecta.");
+				sesion.setAttribute("causaError", null);
 				response.sendRedirect("error.jsp");
 			}
 		} catch (SQLException excepcion) {
