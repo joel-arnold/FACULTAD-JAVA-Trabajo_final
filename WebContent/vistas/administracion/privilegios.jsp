@@ -54,9 +54,9 @@
 				    <label for="campo_privilegioModificar">Privilegio:</label>
 				    <br>
 				    <select id="listaPrivilegios" name="listaPrivilegios">
-  						<% for(Privilegio p: Privilegio.values()){
-  							%> <option value="<% out.print(p.name()); %>"><% out.print(p.name()); %></option> 
-  						<% } %>  						
+  						<option value="EMPLEADO">Empleado</option>
+  						<option value="ADMINISTRADOR">Administrador</option>
+  						<option value="SUPERUSUARIO">Superusuario</option>						
   					</select>
 				    <!-- <input type="text" class="form-control" id="campo_privilegioModificar" name="privilegioModificar"> -->
 				  </div>

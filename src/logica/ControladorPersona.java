@@ -9,6 +9,11 @@ import extras.Excepcion;
 
 public class ControladorPersona {
 
+	public boolean existeUsuario(String usuario) throws SQLException, Excepcion {
+		DatosPersona dp = new DatosPersona();
+		return dp.existeUsuario(usuario);
+	}	
+	
 	public int buscarIDUsuario(String usuario, String contrasena) throws SQLException, Excepcion {
 		DatosPersona dp = new DatosPersona();
 		return dp.buscarIDUsuario(usuario, contrasena);

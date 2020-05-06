@@ -7,7 +7,9 @@
 	  <p><i class="fas fa-hand-point-down"></i> Vea nuestras increíbles ofertas <i class="fas fa-hand-point-down"></i></p>
 	</div>
 </div>
+
 <br><br><br>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-interval="3000" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

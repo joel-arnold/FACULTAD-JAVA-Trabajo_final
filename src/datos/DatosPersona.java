@@ -10,6 +10,47 @@ import extras.Excepcion;
 public class DatosPersona {
 	
 
+	public boolean existeUsuario(String usuario) throws SQLException, Excepcion {
+		ResultSet resultado = null;
+		PreparedStatement sentenciaSQL = null;
+		boolean existe = false;
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
+					"SELECT * FROM usuarios WHERE nombreUsuario = ?");
+			sentenciaSQL.setString(1, usuario);
+			resultado = sentenciaSQL.executeQuery();
+			
+			if (resultado != null && resultado.next()) {
+				existe = true;
+			}
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("Algo salió mal intentando buscar en la base de datos", excepcion);
+		}
+
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando buscar la persona");
+
+		}
+		// Este "Try-Catch" es para cerrar la conexión y sus resultados.
+		try {
+			if (resultado != null)
+				resultado.close();
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+		return existe;
+	}
+	
 	public int buscarIDUsuario(String usuario, String contrasena) throws SQLException, Excepcion {
 		ResultSet resultado = null;
 		PreparedStatement sentenciaSQL = null;

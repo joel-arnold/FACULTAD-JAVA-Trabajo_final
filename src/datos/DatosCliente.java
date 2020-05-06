@@ -13,20 +13,32 @@ public class DatosCliente {
 	public void alta(Cliente cliente) throws SQLException, Excepcion {
 		ResultSet resultado = null;
 		PreparedStatement sentenciaSQL = null;
-		int idUsuario;
+		int idTipoCliente, idUsuario;
 
 		try {
 			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"INSERT INTO usuarios (nombreUsuario, contrasena, privilegio) VALUES (?, ?, ?)",
-					PreparedStatement.RETURN_GENERATED_KEYS);
-			sentenciaSQL.setString(1, cliente.getNombreUsuario());
-			sentenciaSQL.setString(2, cliente.getContrasena());
-			sentenciaSQL.setString(3, cliente.getPrivilegio().toString());
-			sentenciaSQL.executeUpdate();
-			resultado = sentenciaSQL.getGeneratedKeys();
+					"SELECT * FROM forrajeria.tipo_cliente WHERE descripcion = ?");
+			sentenciaSQL.setString(1, cliente.getTipo());
+			resultado = sentenciaSQL.executeQuery();
+			
+			if (resultado != null && resultado.next()) {
+				sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+						.prepareStatement("INSERT INTO usuarios (nombreUsuario, contrasena, privilegio)"
+								+ "values (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+				sentenciaSQL.setString(1, cliente.getNombreUsuario());
+				sentenciaSQL.setString(2, cliente.getContrasena());
+				sentenciaSQL.setString(3, "CLIENTE");
+				sentenciaSQL.executeUpdate();
+				resultado = sentenciaSQL.getGeneratedKeys();
+				if(resultado!=null && resultado.next()){
+					idUsuario = resultado.getInt(1);
+				}
+				
+				// SEGUIR VIENDO ACÁ
+			}
 
 			if (resultado != null && resultado.next()) {
-				idUsuario = resultado.getInt(1);
+				idTipoCliente = resultado.getInt(1);
 
 				sentenciaSQL = Conexion.crearInstancia().abrirConexion()
 						.prepareStatement("INSERT INTO clientes (nombre, apellido, tipoDoc, documento, "
@@ -44,7 +56,7 @@ public class DatosCliente {
 				sentenciaSQL.setString(9, cliente.getTelefono());
 				sentenciaSQL.setString(10, cliente.getCorreoElectronico());
 				sentenciaSQL.setString(11, cliente.getTipo());
-				sentenciaSQL.setInt(12, idUsuario);
+				sentenciaSQL.setInt(12, 1);
 				sentenciaSQL.executeUpdate();
 
 			}
