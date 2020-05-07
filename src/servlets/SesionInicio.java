@@ -48,9 +48,19 @@ public class SesionInicio extends HttpServlet {
 					ControladorCliente cc = new ControladorCliente();
 					Cliente cliente = new Cliente();
 					cliente = cc.buscarPorIDUsuario(idUsuario);
+					sesion.setAttribute("idPersona", cliente.getId());
+					sesion.setAttribute("nombreUsuario", cliente.getNombreUsuario());
 					sesion.setAttribute("nombre", cliente.getNombre());
 					sesion.setAttribute("apellido", cliente.getApellido());
+					sesion.setAttribute("tipoDoc", cliente.getTipoDocumento());
+					sesion.setAttribute("documento", cliente.getDocumento());
+					sesion.setAttribute("domicilioCalle", cliente.getDomicilioCalle());
+					sesion.setAttribute("domicilioNumero", cliente.getDomicilioNumero());
+					sesion.setAttribute("domicilioPiso", cliente.getDomicilioPiso());
+					sesion.setAttribute("domicilioDepto", cliente.getDomicilioDepartamento());
 					sesion.setAttribute("telefono", cliente.getTelefono());
+					sesion.setAttribute("correoElectronico", cliente.getCorreoElectronico());
+					sesion.setAttribute("tipoCliente", cliente.getTipo());
 					sesion.setAttribute("privilegio", "CLIENTE");
 					response.sendRedirect("inicio.jsp");
 				} else if (privilegio.equalsIgnoreCase("EMPLEADO") || privilegio.equalsIgnoreCase("SUPERUSUARIO")
@@ -58,10 +68,26 @@ public class SesionInicio extends HttpServlet {
 					ControladorEmpleado ce = new ControladorEmpleado();
 					Empleado empleado = new Empleado();
 					empleado = ce.buscarPorIDUsuario(idUsuario);
+					sesion.setAttribute("idPersona", empleado.getId());
+					sesion.setAttribute("nombreUsuario", empleado.getNombreUsuario());
 					sesion.setAttribute("nombre", empleado.getNombre());
 					sesion.setAttribute("apellido", empleado.getApellido());
+					sesion.setAttribute("tipoDoc", empleado.getTipoDocumento());
+					sesion.setAttribute("documento", empleado.getDocumento());
+					sesion.setAttribute("cuil", empleado.getCuil());
+					sesion.setAttribute("domicilioCalle", empleado.getDomicilioCalle());
+					sesion.setAttribute("domicilioNumero", empleado.getDomicilioNumero());
+					sesion.setAttribute("domicilioPiso", empleado.getDomicilioPiso());
+					sesion.setAttribute("domicilioDepto", empleado.getDomicilioDepartamento());
 					sesion.setAttribute("telefono", empleado.getTelefono());
-					sesion.setAttribute("privilegio", "EMPLEADO");
+					sesion.setAttribute("correoElectronico", empleado.getCorreoElectronico());
+					if (privilegio.equalsIgnoreCase("EMPLEADO")) {
+						sesion.setAttribute("privilegio", "EMPLEADO");
+					} else if (privilegio.equalsIgnoreCase("ADMINISTRADOR")) {
+						sesion.setAttribute("privilegio", "ADMINISTRADOR");
+					} else if (privilegio.equalsIgnoreCase("SUPERUSUARIO")) {
+						sesion.setAttribute("privilegio", "SUPERUSUARIO");
+					}					
 					response.sendRedirect("inicio.jsp");
 				}
 			} else {

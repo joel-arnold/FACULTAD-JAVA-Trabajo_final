@@ -5,20 +5,40 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-    <% if(session.getAttribute("privilegio") == "CLIENTE"){ %>
     	<li class="nav-item active">
 		 <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Promociones</a>
       	</li>
-     	<% } %>
-      <li class="nav-item">
-        <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-barcode"></i> Productos
+         </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item">Perros</a>
+          <a class="dropdown-item">Gatos</a>
+         </div>
       </li>
-	  <li class="nav-item">
-        <a class="nav-link active" href="#"><i class="fas fa-truck-moving"></i> Pedidos a preparar</a>
-      </li>
+   	<% if(session.getAttribute("privilegio") == ("CLIENTE") ||    	
+    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
+        </li>
+    <% }
+      if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
+    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+	    <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="fas fa-truck-moving"></i> Pedidos a preparar</a>
+        </li>
+  	<% }
+	  if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
+    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
       <li class="nav-item">
         <a class="nav-link active" href="#"><i class="fas fa-exclamation-triangle"></i> Productos próximos a vencer</a>
       </li>
+  	<% }
+	  if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <i class="fas fa-users-cog"></i> Panel de administración
@@ -28,6 +48,7 @@
           <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
         </div>
       </li>
+    <% } %>
     </ul>
     
     <!-- SECCION DE USUARIO -->
@@ -48,7 +69,7 @@
          <i class="fas fa-user-circle"></i> <% out.print(session.getAttribute("nombre")); out.print(" "); out.print(session.getAttribute("apellido"));  %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"> Mi perfil</a>
+          <a class="dropdown-item" href="perfil.jsp"><i class="fas fa-address-card"></i> Mi perfil</a>
           <form action="SesionCierre" method="post">
 			<button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
 		  </form>

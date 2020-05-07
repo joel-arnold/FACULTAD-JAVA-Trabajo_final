@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>Registrarse</title>
+    <title>Perfil</title>
   </head>
   
   <body>
@@ -10,12 +10,12 @@
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     
     <!-- ACÁ ABAJO VA EL CONTENIDO -->
-   	<% if(session.getAttribute("privilegio") == null || session.getAttribute("privilegio") == "SUPERUSUARIO"){ %>
-    <jsp:include page="vistas/usuarios/registroUsuarioContenido.jsp"></jsp:include>
+  	<% if(session.getAttribute("privilegio") != null){ %>
+    <jsp:include page="vistas/usuarios/perfilContenido.jsp"></jsp:include>
     <% } else{ 
     	  session.setAttribute("huboError", "si");
     	  session.setAttribute("causaError", null);
-    	  session.setAttribute("mensajeError", "No tiene permisos para ingresar a esta sección.");
+    	  session.setAttribute("mensajeError", "Para ingresar a esta sección necesita iniciar sesión");
     	  response.sendRedirect("error.jsp");
      } %>
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
