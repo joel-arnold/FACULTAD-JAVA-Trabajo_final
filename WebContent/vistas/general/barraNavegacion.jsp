@@ -5,9 +5,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Promociones</a>
-      </li>
+    <% if(session.getAttribute("privilegio") == "CLIENTE"){ %>
+    	<li class="nav-item active">
+		 <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Promociones</a>
+      	</li>
+     	<% } %>
       <li class="nav-item">
         <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
       </li>
@@ -17,7 +19,6 @@
       <li class="nav-item">
         <a class="nav-link active" href="#"><i class="fas fa-exclamation-triangle"></i> Productos próximos a vencer</a>
       </li>
-      
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <i class="fas fa-users-cog"></i> Panel de administración
@@ -28,8 +29,9 @@
         </div>
       </li>
     </ul>
-    <!-- Button trigger modal -->
-    <% if(session.getAttribute("nombre") == null){ %>
+    
+    <!-- SECCION DE USUARIO -->
+	<% if(session.getAttribute("nombre") == null){ %>
 		<button type="button" class="btn btn-primary bg-dark text-white" data-toggle="modal" data-target="#modalIngreso">
 		  <i class="fas fa-sign-in-alt"></i> Iniciar sesión
 		</button>
@@ -40,13 +42,19 @@
 			</button>
 		</a>
 	<% } else{ %>
-		<a class="nav-item nav-link text-white" href="#">
-			<% out.print(session.getAttribute("nombre")); out.print(" "); out.print(session.getAttribute("apellido"));  %>
-		</a>
-		&nbsp;&nbsp;
-		<form action="SesionCierre" method="post">
-			<button type="submit" class="btn btn-primary bg-dark text-white"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
-		</form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-user-circle"></i> <% out.print(session.getAttribute("nombre")); out.print(" "); out.print(session.getAttribute("apellido"));  %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"> Mi perfil</a>
+          <form action="SesionCierre" method="post">
+			<button type="submit" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</button>
+		  </form>
+        </div>
+      </li>
+    </ul>
 	<% } %>
   </div>
 </nav>

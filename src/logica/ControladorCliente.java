@@ -19,17 +19,17 @@ public class ControladorCliente {
 		datos = new DatosCliente();
 		datos.alta(cliente);
 	}
-	
+
 	public Cliente buscarUno(String apellido, String nombre) throws SQLException, Excepcion {
 		datos = new DatosCliente();
 		return datos.buscarUno(apellido, nombre);
 	}
-	
+
 	public Cliente buscarPorIDUsuario(int id) throws SQLException, Excepcion {
 		datos = new DatosCliente();
 		return datos.buscarPorIDUsuario(id);
 	}
-	
+
 	public ArrayList<Cliente> buscarTodos() throws SQLException, Excepcion {
 		datos = new DatosCliente();
 		return datos.buscarTodos();

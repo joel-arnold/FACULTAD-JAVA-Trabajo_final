@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import logica.*;
 import entidades.*;
 import extras.Excepcion;
@@ -30,21 +32,16 @@ public class SesionInicio extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
-		// Persona persona = new Persona();
 		ControladorPersona cp = new ControladorPersona();
 		int idUsuario;
 		String privilegio = null;
 
 		try {
 			String usuario = request.getParameter("usuario");
-			String contrasena = request.getParameter("contrasena");
-			// System.out.println("EL USUARIO s: " + usuario);
-			// System.out.println("LA CONTRASEÑA s: " + contrasena);
+			String contrasenaEncriptada = DigestUtils.md5Hex(request.getParameter("contrasena"));
 
-			idUsuario = cp.buscarIDUsuario(usuario, contrasena);
+			idUsuario = cp.buscarIDUsuario(usuario, contrasenaEncriptada);
 			privilegio = cp.buscarPrivilegio(idUsuario);
-			// System.out.println("Id usuario: " + idUsuario);
-			// System.out.println("Privilegio: " + privilegio);
 
 			if (privilegio != null) {
 				if (privilegio.equalsIgnoreCase("CLIENTE")) {
@@ -54,6 +51,7 @@ public class SesionInicio extends HttpServlet {
 					sesion.setAttribute("nombre", cliente.getNombre());
 					sesion.setAttribute("apellido", cliente.getApellido());
 					sesion.setAttribute("telefono", cliente.getTelefono());
+					sesion.setAttribute("privilegio", "CLIENTE");
 					response.sendRedirect("inicio.jsp");
 				} else if (privilegio.equalsIgnoreCase("EMPLEADO") || privilegio.equalsIgnoreCase("SUPERUSUARIO")
 						|| privilegio.equalsIgnoreCase("ADMINISTRADOR")) {
@@ -63,6 +61,7 @@ public class SesionInicio extends HttpServlet {
 					sesion.setAttribute("nombre", empleado.getNombre());
 					sesion.setAttribute("apellido", empleado.getApellido());
 					sesion.setAttribute("telefono", empleado.getTelefono());
+					sesion.setAttribute("privilegio", "EMPLEADO");
 					response.sendRedirect("inicio.jsp");
 				}
 			} else {

@@ -18,12 +18,13 @@ import logica.ControladorPersona;
 @WebServlet("/CliRegistro")
 public class CliRegistro extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public CliRegistro() {
-        super();
-    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public CliRegistro() {
+		super();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
 		ControladorCliente cc = new ControladorCliente();
 		ControladorPersona cp = new ControladorPersona();
@@ -40,14 +41,17 @@ public class CliRegistro extends HttpServlet {
 		String departamento = request.getParameter("domicilioDepto");
 		String telefono = request.getParameter("telefono");
 		String correoElectronico = request.getParameter("correoElectronico");
-		
+
 		try {
-			if(!cp.existeUsuario(usuarioElegido)) {
-				Cliente cliente = new Cliente(calle, numeroCalle, piso, departamento, telefono, correoElectronico, tipoDoc, nroDocumento, apellido, nombre, usuarioElegido, contrasena1, "Común");
+			if (!cp.existeUsuario(usuarioElegido)) {
+				Cliente cliente = new Cliente(calle, numeroCalle, piso, departamento, telefono, correoElectronico,
+						tipoDoc, nroDocumento, apellido, nombre, usuarioElegido, contrasena1, "Común");
 				cc.alta(cliente);
 				response.sendRedirect("inicio.jsp");
-			}else {
+			} else {
 				sesion.setAttribute("mensajeError", "El nombre de usuario elegido ya existe");
+				sesion.setAttribute("huboError", "si");
+				response.sendRedirect("error.jsp");
 			}
 		} catch (SQLException excepcion) {
 			sesion.setAttribute("huboError", "si");
@@ -58,8 +62,6 @@ public class CliRegistro extends HttpServlet {
 			sesion.setAttribute("mensajeError", e.getMessage().toString());
 			response.sendRedirect("error.jsp");
 		}
-		
-		System.out.println(usuarioElegido + contrasena1 + contrasena2 + apellido + nombre + tipoDoc + nroDocumento + calle + numeroCalle + piso + departamento + correoElectronico + telefono);
 	}
 
 }

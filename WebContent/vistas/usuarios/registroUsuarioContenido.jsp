@@ -11,15 +11,21 @@
    <div class="row">
       <div class="col-md-4 mx-auto">
          <div class="myform form ">
-            <form action="CliRegistro" method="post" name="formularioRegistro">            
+            <form action="CliRegistro" method="post" name="formularioRegistro">
+               <!-- INPUTS FALSOS (Y OCULTOS) PARA EVITAR EL AUTO-COMPLETADO DE LOS EXPLORADORES -->
+               <input type="text" name="usuarioFalso"  class="form-control my-input" id="usuarioFalso"style="position: fixed;top:-100px;left:-100px; width:5px;">
+               <input type="password" name="contrasenaFalsa"  class="form-control my-input" id="contrasenaFalsa" style="position: fixed;top:-100px;left:-100px; width:5px;">
+               <input type="password" name="contrasenaFalsa2"  class="form-control my-input" id="contrasenaFalsa2" style="position: fixed;top:-100px;left:-100px; width:5px;">
+               <input type="text" name="usuarioFalsito"  class="form-control my-input" id="usuarioFalsito"style="position: fixed;top:-100px;left:-100px; width:5px;">
+               <!-- LISTO, AHORA LO QUE SE MUESTRA DE VERDAD -->
                <div class="form-group">
-                  <input type="text" name="usuario"  class="form-control my-input" id="usuario" placeholder="Nombre de usuario" required="required">
+                  <input type="text" name="usuario"  class="form-control my-input" id="usuario" placeholder="Nombre de usuario" required="required" autocomplete="off">
                </div>
                <div class="form-group">
-                  <input type="password" name="contrasena1"  class="form-control my-input" id="contrasena1" placeholder="Contraseña" required="required">
+                  <input type="password" name="contrasena1"  class="form-control my-input" id="contasena" placeholder="Contraseña" required="required">
                </div>
                <div class="form-group">
-                  <input type="password" name="contrasena2"  class="form-control my-input" id="contrasena2" placeholder="Reingrese su contraseña" required="required">
+                  <input type="password" name="contrasena2"  class="form-control my-input" id="contrasena" placeholder="Reingrese su contraseña" required="required">
                </div>
                <hr>
                <div class="col-md-6 mx-auto text-center">

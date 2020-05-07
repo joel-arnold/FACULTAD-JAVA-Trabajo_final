@@ -16,49 +16,44 @@ public class DatosCliente {
 		int idTipoCliente, idUsuario;
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM forrajeria.tipo_cliente WHERE descripcion = ?");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("SELECT * FROM tipo_cliente WHERE descripcion = ?");
 			sentenciaSQL.setString(1, cliente.getTipo());
 			resultado = sentenciaSQL.executeQuery();
-			
+
 			if (resultado != null && resultado.next()) {
-				sentenciaSQL = Conexion.crearInstancia().abrirConexion()
-						.prepareStatement("INSERT INTO usuarios (nombreUsuario, contrasena, privilegio)"
-								+ "values (?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
+				idTipoCliente = resultado.getInt(1);
+				sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
+						"INSERT INTO usuarios (nombreUsuario, contrasena, privilegio)" + "values (?,?,?)",
+						PreparedStatement.RETURN_GENERATED_KEYS);
 				sentenciaSQL.setString(1, cliente.getNombreUsuario());
 				sentenciaSQL.setString(2, cliente.getContrasena());
 				sentenciaSQL.setString(3, "CLIENTE");
 				sentenciaSQL.executeUpdate();
 				resultado = sentenciaSQL.getGeneratedKeys();
-				if(resultado!=null && resultado.next()){
+
+				if (resultado != null && resultado.next()) {
 					idUsuario = resultado.getInt(1);
+
+					sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+							.prepareStatement("INSERT INTO clientes (nombre, apellido, tipoDoc, documento, "
+									+ "domicilioCalle, domicilioNumero, domicilioPiso, domicilioDepto, "
+									+ "telefono, correoElectronico, tipo_cliente, usuario)"
+									+ "values (?,?,?,?,?,?,?,?,?,?,?,?)");
+					sentenciaSQL.setString(1, cliente.getNombre());
+					sentenciaSQL.setString(2, cliente.getApellido());
+					sentenciaSQL.setString(3, cliente.getTipoDocumento());
+					sentenciaSQL.setString(4, cliente.getDocumento());
+					sentenciaSQL.setString(5, cliente.getDomicilioCalle());
+					sentenciaSQL.setString(6, cliente.getDomicilioNumero());
+					sentenciaSQL.setString(7, cliente.getDomicilioPiso());
+					sentenciaSQL.setString(8, cliente.getDomicilioDepartamento());
+					sentenciaSQL.setString(9, cliente.getTelefono());
+					sentenciaSQL.setString(10, cliente.getCorreoElectronico());
+					sentenciaSQL.setInt(11, idTipoCliente);
+					sentenciaSQL.setInt(12, idUsuario);
+					sentenciaSQL.executeUpdate();
 				}
-				
-				// SEGUIR VIENDO ACÁ
-			}
-
-			if (resultado != null && resultado.next()) {
-				idTipoCliente = resultado.getInt(1);
-
-				sentenciaSQL = Conexion.crearInstancia().abrirConexion()
-						.prepareStatement("INSERT INTO clientes (nombre, apellido, tipoDoc, documento, "
-								+ "domicilioCalle, domicilioNumero, domicilioPiso, domicilioDepto, "
-								+ "telefono, correoElectronico, tipo_cliente, usuario)\r\n"
-								+ "values (?,?,?,?,?,?,?,?,?,?,?,?)", PreparedStatement.RETURN_GENERATED_KEYS);
-				sentenciaSQL.setString(1, cliente.getNombre());
-				sentenciaSQL.setString(2, cliente.getApellido());
-				sentenciaSQL.setString(3, cliente.getTipoDocumento());
-				sentenciaSQL.setString(4, cliente.getDocumento());
-				sentenciaSQL.setString(5, cliente.getDomicilioCalle());
-				sentenciaSQL.setString(6, cliente.getDomicilioNumero());
-				sentenciaSQL.setString(7, cliente.getDomicilioPiso());
-				sentenciaSQL.setString(8, cliente.getDomicilioDepartamento());
-				sentenciaSQL.setString(9, cliente.getTelefono());
-				sentenciaSQL.setString(10, cliente.getCorreoElectronico());
-				sentenciaSQL.setString(11, cliente.getTipo());
-				sentenciaSQL.setInt(12, 1);
-				sentenciaSQL.executeUpdate();
-
 			}
 		}
 
@@ -92,10 +87,10 @@ public class DatosCliente {
 		Cliente cliente = null;
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
-					+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id WHERE apellido = ? "
-					+ "AND nombre = ?");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
+							+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id WHERE apellido = ? "
+							+ "AND nombre = ?");
 			sentenciaSQL.setString(1, apellido);
 			sentenciaSQL.setString(2, nombre);
 			resultado = sentenciaSQL.executeQuery();
@@ -143,16 +138,16 @@ public class DatosCliente {
 		}
 		return cliente;
 	}
-	
+
 	public Cliente buscarPorIDUsuario(int id) throws SQLException, Excepcion {
 		ResultSet resultado = null;
 		PreparedStatement sentenciaSQL = null;
 		Cliente cliente = null;
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
-					+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id WHERE u.id = ?");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
+							+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id WHERE u.id = ?");
 			sentenciaSQL.setInt(1, id);
 			resultado = sentenciaSQL.executeQuery();
 
@@ -206,9 +201,9 @@ public class DatosCliente {
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
 		try {
-			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
-					+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id");
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("SELECT * FROM clientes c LEFT JOIN usuarios u ON c.usuario = u.id "
+							+ "LEFT JOIN tipo_cliente tc ON c.tipo_cliente = tc.id");
 			resultado = sentenciaSQL.executeQuery();
 
 			while (resultado.next()) {
