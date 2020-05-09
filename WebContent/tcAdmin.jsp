@@ -6,7 +6,7 @@
     <script type="text/javascript" src="vistas/administracion/tiposCliente.Controlador.js"></script>
   </head>
   
-  <body>
+  <body class="bg-light">
   	<% session.setAttribute("huboError", null); %>
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     

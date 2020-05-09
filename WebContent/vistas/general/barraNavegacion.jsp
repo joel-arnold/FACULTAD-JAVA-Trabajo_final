@@ -15,6 +15,7 @@
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item">Perros</a>
           <a class="dropdown-item">Gatos</a>
+          <a class="dropdown-item">Burros</a>
          </div>
       </li>
    	<% if(session.getAttribute("privilegio") == ("CLIENTE") ||    	

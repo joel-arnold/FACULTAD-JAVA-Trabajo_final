@@ -2,7 +2,7 @@
    <br><br>
    <div class="jumbotron bg-dark text-light" style="margin-left:20%; margin-right:20%">
    	  <h1 class="display-4">Mi perfil</h1>
-	  <hr class="my-4">
+	  <hr class="my-4 bg-light">
 	  <ul style="text-align: left">
 	  	<li><% out.print("Usuario: " + session.getAttribute("nombreUsuario")); %></li>
 	  	<li><% out.print("Nombre y apellido: " + session.getAttribute("nombre") + " " + session.getAttribute("apellido")); %></li>

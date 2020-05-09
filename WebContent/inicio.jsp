@@ -5,7 +5,7 @@
     <title>¡Bienvenido!</title>
   </head>
   
-  <body>
+  <body class="bg-light">
   	<% session.setAttribute("huboError", null); %>
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     
