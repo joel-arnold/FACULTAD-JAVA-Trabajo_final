@@ -31,8 +31,8 @@
 				<button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModificacion"
 					onclick="configModificar(
                      		'<%out.print(p.getId());%>',
-                     		'<%out.print(p.getRazonSocial()); %>',
-                     		'<%out.print(p.getCuit());%>',
+                     		'<%out.print(p.getRazonSocial());%>',
+                     		'<%out.print(p.getCuit()); %>',
                      		'<%out.print(p.getDomicilioCalle());%>',
                      		'<%out.print(p.getDomicilioNumero());%>',
                      		'<%out.print(p.getDomicilioPiso());%>',
@@ -136,40 +136,40 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Modificar tipo de cliente</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">Modificar datos del proveedor</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="modificaTC" method="post" action="TcModifica">
+	        	<form role="form" id="modificaProveedor" method="post" action="ProveedorModifica">
 				  <div class="form-group d-none">
 				    <label for="campo_idModificar">ID:</label>
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="campo_razonSocialModif" name="razonSocial" placeholder="Razón social">
+				    <input type="text" class="form-control" id="campo_razonSocial" name="razonSocial" placeholder="Razón social">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT">
+				    <input type="text" class="form-control text-left" id="campo_cuit" name="cuit" placeholder="CUIT">
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle">
-					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro.">
+					    <input type="text" class="form-control text-left w-75" id="campo_calle" name="calle" placeholder="Calle">
+					    <input type="text" class="form-control text-left w-25" id="campo_numero" name="numero" placeholder="Nro.">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-50" id="piso" name="piso" placeholder="Piso">
-					    <input type="text" class="form-control text-left w-50" id="departamento" name="departamento" placeholder="Depto.">
+					    <input type="text" class="form-control text-left w-50" id="campo_piso" name="piso" placeholder="Piso">
+					    <input type="text" class="form-control text-left w-50" id="campo_depto" name="departamento" placeholder="Depto.">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono">
+				    <input type="tel" class="form-control text-left" id="campo_telefono" name="telefono" placeholder="Teléfono">
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
+				    <input type="email" class="form-control text-left" id="campo_correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
 				  </div>
 				  <div class="text-right">
 				  	<br>

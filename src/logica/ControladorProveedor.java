@@ -20,6 +20,10 @@ public class ControladorProveedor {
 		datos.alta(proveedor);
 	}
 	
+	public void modificacion(Proveedor proveedor) throws SQLException, Excepcion{
+		datos.modificacion(proveedor);
+	}
+	
 	public void baja(int id) throws SQLException, Excepcion{
 		datos.baja(id);
 	}

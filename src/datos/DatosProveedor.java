@@ -132,4 +132,46 @@ public class DatosProveedor {
 		}
 	}
 	
+	public void modificacion(Proveedor proveedor) throws SQLException, Excepcion {
+		PreparedStatement sentenciaSQL = null;
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("UPDATE proveedores SET razonSocial = ?, cuit = ?, domicilioCalle = ?, "
+							+ "domicilioNumero = ?, domicilioPiso = ?, domicilioDepto = ?, telefono = ?, "
+							+ "correoElectronico = ? WHERE id = ? ");
+			sentenciaSQL.setString(1, proveedor.getRazonSocial());
+			sentenciaSQL.setString(2, proveedor.getCuit());
+			sentenciaSQL.setString(3, proveedor.getDomicilioCalle());
+			sentenciaSQL.setString(4, proveedor.getDomicilioNumero());
+			sentenciaSQL.setString(5, proveedor.getDomicilioPiso());
+			sentenciaSQL.setString(6, proveedor.getDomicilioDepartamento());
+			sentenciaSQL.setString(7, proveedor.getTelefono());
+			sentenciaSQL.setString(8, proveedor.getCorreoElectronico());
+			sentenciaSQL.setInt(9, proveedor.getId());
+			sentenciaSQL.executeUpdate();
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("Algo salió mal intentando modificar el proveedor en la base de datos", excepcion);
+		}
+
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando modificar el proveedor");
+		}
+
+		// Este Try-Catch es para cerrar la conexión y sus resultados.
+		try {
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+	}
+	
 }
