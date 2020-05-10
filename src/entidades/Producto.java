@@ -1,82 +1,63 @@
 package entidades;
 
-import java.util.Date;
-
 public class Producto {
 	
 	private int id;
+	private String codigo;
 	private String nombre;
 	private String descripcion;
-	private Date fechaVencimiento;
-	private double precio;
-	private float existencia;
+	private double tamaño;
+	private String unidadMedida;
+	private double precioVenta;
 	private CategoriaProducto categoria;
 	
-	public Producto(int id, String nombre, String descripcion, Date fechaVencimiento, double precio, float existencia,
-			CategoriaProducto categoria) {
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.fechaVencimiento = fechaVencimiento;
-		this.precio = precio;
-		this.existencia = existencia;
-		this.categoria = categoria;
-	}
-
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
-	public Date getFechaVencimiento() {
-		return fechaVencimiento;
+	public double getTamaño() {
+		return tamaño;
 	}
-
-	public void setFechaVencimiento(Date fechaVencimiento) {
-		this.fechaVencimiento = fechaVencimiento;
+	public void setTamaño(double tamaño) {
+		this.tamaño = tamaño;
 	}
-
-	public double getPrecio() {
-		return precio;
+	public String getUnidadMedida() {
+		return unidadMedida;
 	}
-
-	public void setPrecio(double precio) {
-		this.precio = precio;
+	public void setUnidadMedida(String unidadMedida) {
+		this.unidadMedida = unidadMedida;
 	}
-
-	public float getExistencia() {
-		return existencia;
+	public double getPrecioVenta() {
+		return precioVenta;
 	}
-
-	public void setExistencia(float existencia) {
-		this.existencia = existencia;
+	public void setPrecioVenta(double precioVenta) {
+		this.precioVenta = precioVenta;
 	}
-
 	public CategoriaProducto getCategoria() {
 		return categoria;
 	}
-
 	public void setCategoria(CategoriaProducto categoria) {
 		this.categoria = categoria;
 	}
-	
+		
 }

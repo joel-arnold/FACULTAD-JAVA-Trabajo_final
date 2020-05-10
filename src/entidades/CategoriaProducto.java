@@ -1,31 +1,38 @@
 package entidades;
 
 public class CategoriaProducto {
-	
-	private String idCategoria;
-	private String descripcionCategoria;
 
-	public CategoriaProducto(String idCategoria, String descripcionCategoria) {
+	private int idCategoria;
+	private String nombre, descripcion;
+
+	public CategoriaProducto(int idCategoria, String nombre, String descripcion) {
 		this.idCategoria = idCategoria;
-		this.descripcionCategoria = descripcionCategoria;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
 	}
-	
-	public String getIdCategoria() {
+
+	public int getIdCategoria() {
 		return idCategoria;
 	}
 
-	/* Este no es necesario ya que el ID debería
-	   generarse automáticamente en la BD */
-	public void setIdCategoria(String idCategoria) {
+	public void setIdCategoria(int idCategoria) {
 		this.idCategoria = idCategoria;
 	}
 
-	public String getDescripcionCategoria() {
-		return descripcionCategoria;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setDescripcionCategoria(String descripcionCategoria) {
-		this.descripcionCategoria = descripcionCategoria;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-		
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 }

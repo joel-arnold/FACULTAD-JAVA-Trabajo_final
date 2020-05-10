@@ -99,10 +99,12 @@ public class SesionInicio extends HttpServlet {
 		} catch (SQLException excepcion) {
 			sesion.setAttribute("huboError", "si");
 			sesion.setAttribute("mensajeError", excepcion.getMessage().toString());
+			sesion.setAttribute("causaError", excepcion.getCause().toString());
 			response.sendRedirect("error.jsp");
 		} catch (Excepcion e) {
 			sesion.setAttribute("huboError", "si");
-			sesion.setAttribute("mensajeError", e.getMessage().toString());
+			sesion.setAttribute("mensajeError", e.getMensajeDeError());
+			sesion.setAttribute("causaError", e.getCause().toString());
 			response.sendRedirect("error.jsp");
 		}
 	}

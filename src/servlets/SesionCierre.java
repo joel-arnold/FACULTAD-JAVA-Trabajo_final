@@ -27,17 +27,20 @@ public class SesionCierre extends HttpServlet {
 		HttpSession sesion = request.getSession(true);
 
 		try {
-			String nombre = (String) sesion.getAttribute("nombre");
-			if (nombre == null) {
-				response.getWriter().print("No hay ningún usuario logueado.");
-			} else {
+			if (sesion.getAttribute("nombreUsuario") != null) {
 				sesion.invalidate();
 				response.sendRedirect("inicio.jsp");
+			} else {
+				sesion.setAttribute("huboError", "si");
+				sesion.setAttribute("mensajeError", "No hay ningún usuario logueado");
+				response.sendRedirect("error.jsp");
 			}
 		} catch (Exception e) {
-			System.out.println("Mensaje de error: " + e.getMessage());
-			System.out.println("\nCausa de error: " + e.getLocalizedMessage());
+			sesion.setAttribute("huboError", "si");
+			sesion.setAttribute("mensajeError", e.getMessage());
+			sesion.setAttribute("causaError", e.getCause().toString());
+			response.sendRedirect("error.jsp");
 		}
 	}
-	
+
 }

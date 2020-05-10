@@ -5,9 +5,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+   	<% 
+	   if(session.getAttribute("privilegio") == ("CLIENTE") ||    	
+		session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+		<li class="nav-item">
+		 <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
+		</li>
+	<% }   	
+   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
+    	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
     	<li class="nav-item active">
 		 <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Promociones</a>
       	</li>
+   	<% }
+   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
+   	   !(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
         <li class="nav-item dropdown">
          <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-barcode"></i> Productos
@@ -18,30 +30,46 @@
           <a class="dropdown-item">Burros</a>
          </div>
       </li>
-   	<% if(session.getAttribute("privilegio") == ("CLIENTE") ||    	
-    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-        <li class="nav-item">
-          <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
-        </li>
+   	<% }
+   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
+   	   	   	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
+   	   	    <li class="nav-item active">
+   	   		 <a class="nav-link" href="#"><i class="fab fa-whatsapp"></i> Contacto</a>
+   	   	    </li>
     <% }
+  	  	if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
+  	    session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+  	    session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+  	      <li class="nav-item">
+  	        <a class="nav-link active" href="#"><i class="fas fa-exclamation-triangle"></i> Productos a vencer</a>
+  	      </li>
+ 	<% }
       if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
     	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
     	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
 	    <li class="nav-item">
-          <a class="nav-link active" href="#"><i class="fas fa-truck-moving"></i> Pedidos a preparar</a>
+          
         </li>
   	<% }
-	  if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
-    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
-    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-      <li class="nav-item">
-        <a class="nav-link active" href="#"><i class="fas fa-exclamation-triangle"></i> Productos próximos a vencer</a>
-      </li>
-  	<% }
+      if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
+    	    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+    		    <li class="nav-item dropdown">
+		         <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		           <i class="fas fa-truck-moving"></i> Pedidos
+		         </a>
+		         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		           <a class="dropdown-item" href="#">A preparar</a>
+		           <a class="dropdown-item" href="#">Preparados</a>
+		           <a class="dropdown-item" href="#">Entregados</a>
+		           <a class="dropdown-item" href="#">Cargar compra</a>
+		         </div>
+    	        </li>
+ 	<% }
 	  if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
     	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <i class="fas fa-users-cog"></i> Panel de administración
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
