@@ -75,6 +75,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="privilegioAdmin.jsp"><i class="fas fa-window-restore"></i> Privilegios</a>
           <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
+          <a class="dropdown-item" href="proveedoresAdmin.jsp"><i class="fas fa-portrait"></i> Proveedores</a>
         </div>
       </li>
     <% } %>

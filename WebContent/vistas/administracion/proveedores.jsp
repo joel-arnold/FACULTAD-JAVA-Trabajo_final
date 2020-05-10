@@ -3,35 +3,47 @@
 <%@page import="logica.*"%>
 <div class="container-fluid" style="text-align:center">
 	<br><br>
-		<h1>Tipos de cliente</h1>
+		<h1>Proveedores</h1>
 		<div class="form-group" style="margin-top: 40px; background-color: #FFF; margin-bottom: 10px; margin-left:10%; margin-right:10%">
-			<% 	ControladorTipoCliente ctc = new ControladorTipoCliente(); 
-			ArrayList<TipoCliente> lista = ctc.buscarTodos(); %>
+			<% 	ControladorProveedor cp = new ControladorProveedor(); 
+			ArrayList<Proveedor> lista = cp.buscarTodos(); %>
 		   	<table class="table table-bordered table-hover table-responsive-sm">
 			<thead class="thead-dark">
 			  <tr>
-			    <th scope="col">Descripción</th>
-			    <th scope="col">Porcentaje descuento</th>
-			    <th scope="col">Acción</th>
+			    <th scope="col">Razón social</th>
+			    <th scope="col">CUIT</th>
+			    <th scope="col">Domicilio</th>
+			    <th scope="col">Teléfono</th>
+			    <th scope="col">Correo electrónico</th>
+			    <th>Acción</th>
 			  </tr>
 			</thead>
 			<tbody>
 			   	
-			<%for(TipoCliente tc : lista){; %>
+			<%for(Proveedor p : lista){; %>
 			<tr>
-			<td><% out.print(tc.getDescripcion()); %></td>
-			<td><% out.print(tc.getPorcentajeDescuento()); %></td>
+			<td><% out.print(p.getRazonSocial()); %></td>
+			<td><% out.print(p.getCuit()); %></td>
+			<td><% out.print(p.getDomicilioCalle() + " " + p.getDomicilioNumero()); %></td>
+			<td><% out.print(p.getCorreoElectronico()); %></td>
+			<td><% out.print(p.getTelefono()); %></td>
 			<td scope="row">
 				<button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModificacion"
 					onclick="configModificar(
-                     		'<%out.print(tc.getId());%>',
-                     		'<%out.print(tc.getDescripcion()); %>',
-                     		'<%out.print(tc.getPorcentajeDescuento());%>'	 
+                     		'<%out.print(p.getId());%>',
+                     		'<%out.print(p.getRazonSocial()); %>',
+                     		'<%out.print(p.getCuit());%>',
+                     		'<%out.print(p.getDomicilioCalle());%>',
+                     		'<%out.print(p.getDomicilioNumero());%>',
+                     		'<%out.print(p.getDomicilioPiso());%>',
+                     		'<%out.print(p.getDomicilioDepartamento());%>',
+                     		'<%out.print(p.getCorreoElectronico());%>',
+                     		'<%out.print(p.getTelefono());%>'	 
                      	 )"><i class="fas fa-edit"></i>				
 				</button>
 				&nbsp;&nbsp;
 				<button class="btn btn-danger" data-toggle="modal" data-target="#modalBaja"
-					onclick="configIdEliminar('<%out.print(tc.getId());%>')"><i class="fas fa-times"></i>
+					onclick="configIdEliminar('<%out.print(p.getId());%>')"><i class="fas fa-times"></i>
 				</button>
 			</td>
 			</tr>
@@ -48,20 +60,36 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Nuevo tipo de cliente</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">Nuevo proveedor</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="altaTC" method="post" action="TcAlta">
+	        	<form role="form" id="altaProveedor" method="post" action="ProveedorAlta">
 				  <div class="form-group">
-				    <label for="descripcion">Tipo:</label>
-				    <input type="text" class="form-control" id="descripcion" name="descripcion">
+				    <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Razón social">
 				  </div>
 				  <div class="form-group">
-				    <label for="porcentaje">Porcentaje:</label>
-				    <input type="number" class="form-control text-right" id="porcentaje" name="porcentaje">
+				    <input type="text" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT">
+				  </div>
+				  <div class="form-group">
+				    <div class="row">
+					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle">
+					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro.">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="row">
+					    <input type="text" class="form-control text-left w-50" id="piso" name="piso" placeholder="Piso">
+					    <input type="text" class="form-control text-left w-50" id="departamento" name="departamento" placeholder="Depto.">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono">
+				  </div>
+				  <div class="form-group">
+				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -85,12 +113,12 @@
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="bajaTC" method="post" action="TcElimina">
+	        	<form role="form" id="eliminaProveedor" method="post" action="ProveedorElimina">
 				  <div class="form-group d-none">
 				    <input type="number" class="form-control" id="campo_idEliminar" name="idEliminar">
 				  </div>
 				  <div class="form-group">
-				    <label for="Confirmar">¿Está seguro que desea eliminar este tipo de cliente?</label>
+				    <label for="Confirmar">¿Está seguro que desea eliminar este proveedor?</label>
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -120,12 +148,28 @@
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <label for="campo_descripcionModificar">Descripción:</label>
-				    <input type="text" class="form-control" id="campo_descripcionModificar" name="descripcionModificar">
+				    <input type="text" class="form-control" id="campo_razonSocialModif" name="razonSocial" placeholder="Razón social">
 				  </div>
 				  <div class="form-group">
-				    <label for="campo_porcentajeModificar">Porcentaje:</label>
-				    <input type="number" class="form-control" id="campo_porcentajeModificar" name="porcentajeModificar">
+				    <input type="text" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT">
+				  </div>
+				  <div class="form-group">
+				    <div class="row">
+					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle">
+					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro.">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="row">
+					    <input type="text" class="form-control text-left w-50" id="piso" name="piso" placeholder="Piso">
+					    <input type="text" class="form-control text-left w-50" id="departamento" name="departamento" placeholder="Depto.">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono">
+				  </div>
+				  <div class="form-group">
+				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
 				  </div>
 				  <div class="text-right">
 				  	<br>

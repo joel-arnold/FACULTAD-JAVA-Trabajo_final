@@ -10,33 +10,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import entidades.TipoCliente;
+import entidades.Proveedor;
 import extras.Excepcion;
-import logica.ControladorTipoCliente;
+import logica.ControladorProveedor;
 
-@WebServlet("/TcAlta")
-public class TcAlta extends HttpServlet {
+@WebServlet("/ProveedorAlta")
+public class ProveedorAlta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public TcAlta() {
+	public ProveedorAlta() {
 		super();
-	}
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
-		ControladorTipoCliente ctc = new ControladorTipoCliente();
-		String descripcion = (String) request.getParameter("descripcion");
-		float porcentaje = Float.parseFloat(request.getParameter("porcentaje"));
-		TipoCliente tc = new TipoCliente(descripcion, porcentaje);
+		ControladorProveedor cp = new ControladorProveedor();
+		String razonSocial = request.getParameter("razonSocial");
+		String cuit = request.getParameter("cuit");
+		String calle = request.getParameter("calle");
+		String numero = request.getParameter("numero");
+		String piso = request.getParameter("piso");
+		String departamento = request.getParameter("departamento");
+		String telefono = request.getParameter("telefono");
+		String correoElectronico = request.getParameter("correoElectronico");
+		Proveedor proveedor = new Proveedor(calle, numero, piso, departamento, telefono, correoElectronico,
+				razonSocial, cuit);
 		try {
-			ctc.alta(tc);
+			cp.alta(proveedor);
 			sesion.setAttribute("huboError", null);
-			response.sendRedirect("tcAdmin.jsp");
+			response.sendRedirect("proveedoresAdmin.jsp");
 		} catch (SQLException e) {
 			sesion.setAttribute("huboError", "si");
 			sesion.setAttribute("mensajeError", e.getMessage().toString());
