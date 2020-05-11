@@ -9,7 +9,7 @@
 	   if(session.getAttribute("privilegio") == ("CLIENTE") ||    	
 		session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
 		<li class="nav-item">
-		 <a class="nav-link active" href="#"><i class="fas fa-shopping-cart"></i> Comprar</a>
+		 <a class="nav-link active" href="compraAdmin.jsp"><i class="fas fa-shopping-cart"></i> Comprar</a>
 		</li>
 	<% }   	
    	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	

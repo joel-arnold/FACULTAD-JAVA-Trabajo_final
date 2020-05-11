@@ -1,5 +1,7 @@
 package entidades;
 
+import java.util.Date;
+
 public class Producto {
 	
 	private int id;
@@ -9,7 +11,11 @@ public class Producto {
 	private double tamaño;
 	private String unidadMedida;
 	private double precioVenta;
-	private CategoriaProducto categoria;
+	private Date fechaCompra;
+	private Date fechaVencimiento;
+	private Date fechaVenta;
+	private double precioCompra;
+	private String categoria;
 	
 	public int getId() {
 		return id;
@@ -53,11 +59,34 @@ public class Producto {
 	public void setPrecioVenta(double precioVenta) {
 		this.precioVenta = precioVenta;
 	}
-	public CategoriaProducto getCategoria() {
+	public Date getFechaCompra() {
+		return fechaCompra;
+	}
+	public void setFechaCompra(Date fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
+	public Date getFechaVencimiento() {
+		return fechaVencimiento;
+	}
+	public void setFechaVencimiento(Date fechaVencimiento) {
+		this.fechaVencimiento = fechaVencimiento;
+	}
+	public Date getFechaVenta() {
+		return fechaVenta;
+	}
+	public void setFechaVenta(Date fechaVenta) {
+		this.fechaVenta = fechaVenta;
+	}
+	public double getPrecioCompra() {
+		return precioCompra;
+	}
+	public void setPrecioCompra(double precioCompra) {
+		this.precioCompra = precioCompra;
+	}
+	public String getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(CategoriaProducto categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
-	}
-		
+	}		
 }
