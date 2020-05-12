@@ -1,7 +1,10 @@
   <!-- Page Content -->
   <!-- <div class="container" style="padding-top:2%"> -->
 
-    <div class="row" style="padding-left:2%; padding-right:2%; padding-top:2%; padding-bottom2%;">
+<%@page import="logica.ControladorProducto"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidades.Producto"%>
+<div class="row" style="padding-left:2%; padding-right:2%; padding-top:2%; padding-bottom2%;">
 
       <div class="col-lg-2">
 
@@ -17,103 +20,32 @@
 
       <div class="col-lg-6">
 
+		<!-- ACÁ VAN LOS PRODUCTOS -->
         <div class="row">
+			
+		  <% ArrayList<Producto> productos = new ArrayList<Producto>();
+		  	 ControladorProducto cp = new ControladorProducto();
+		  	 productos = cp.buscarTodos();
+		  	 
+		  	 for(Producto p: productos){ %>
+		          <div class="col-lg-4 col-md-6 mb-4">
+		            <div class="card h-100">
+		              <a href="#"><img class="card-img-top" src="img/<% out.print(p.getImagen()); %>" alt="Producto X"></a>
+		              <div class="card-body" style="text-align:center">
+		                <h6 class="card-title">
+		                  <a> <% out.print(p.getNombre() + " x " + p.getTamaño() + p.getUnidadMedida() + " - $" + p.getPrecioVenta()); %></a>
+						</h6>
+						<p class="card-text"><% out.print(p.getCategoria()); %></p>
+		              </div>
+		              <div class="card-footer">
+		              	<div class="d-flex justify-content-center">
+		                	<button type="button" class="btn btn-info"><small>Agregar al carrito</small></button>
+		              	</div>
+		              </div>
+		            </div>
+		          </div>		  		 
+		   <% } %>
 
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_gato.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Gatos x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para gatos de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_perros.png" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Perros x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para perros de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_gato.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Gatos x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para gatos de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9734; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_perros.png" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Perros x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para perros de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9734; &#9734; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_gato.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Gatos x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para gatos de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/bolsa_perros.png" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#"> Perros x 1Kg.</a>
-                </h4>
-                <h5>$250</h5>
-                <p class="card-text">La mejor bolsa de alimento balanceado para perros de la zona</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-              </div>
-            </div>
-          </div>
 
         </div>
         <!-- /.row -->
@@ -146,10 +78,9 @@
                             </div>
                             <div class="col-4 col-sm-4 col-md-6">
                                 <div class="quantity">
-                                    <input type="button" value="+" class="plus">
-                                    <input class="w-25" type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                           size="4">
-                                    <input type="button" value="-" class="minus">
+                                    <input type="button" value="-" class="minus" id="min" style="cursor:pointer;">
+								    <input class="text-center" name="quantity" id="quantity" value="0" size="2" />
+								    <input type="button" value="+" class="plus" id="plus" style="cursor:pointer;">                                  
                                 </div>
                             </div>
                             <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -159,8 +90,8 @@
                             </div>
                         </div>
                     </div>
-                    
                     <!-- FIN PRODUCTO -->
+                    
                 <hr>
             </div>
             <div class="card-footer">
