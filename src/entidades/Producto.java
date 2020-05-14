@@ -18,6 +18,23 @@ public class Producto {
 	private String categoria;
 	private String imagen;
 	
+	public Producto() {
+		
+	}
+	
+	public Producto(String codigo, String nombre, String descripcion, Double tamano, String unidadMedida, 
+			Double precioVenta, String categoria, String imagen) {
+		this.codigo = codigo;
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.tamaño = tamano;
+		this.unidadMedida = unidadMedida;
+		this.precioVenta = precioVenta;
+		this.categoria = categoria;
+		this.imagen = imagen;
+		
+	}
+	
 	public int getId() {
 		return id;
 	}

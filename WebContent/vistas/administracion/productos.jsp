@@ -3,42 +3,46 @@
 <%@page import="logica.*"%>
 <div class="container-fluid" style="text-align:center">
 	<br><br>
-		<h1>Proveedores</h1>
+		<h1>Productos</h1>
 		<div class="form-group" style="margin-top: 40px; background-color: #FFF; margin-bottom: 10px; margin-left:10%; margin-right:10%">
-			<% 	ControladorProveedor cp = new ControladorProveedor(); 
-			ArrayList<Proveedor> lista = cp.buscarTodos(); %>
+			<% 	ControladorProducto cp = new ControladorProducto(); 
+			ArrayList<Producto> lista = cp.buscarTodos(); %>
 		   	<table class="table table-bordered table-hover table-responsive-sm">
 			<thead class="thead-dark">
 			  <tr>
-			    <th scope="col">Razón social</th>
-			    <th scope="col">CUIT</th>
-			    <th scope="col">Domicilio</th>
-			    <th scope="col">Correo electrónico</th>
-			    <th scope="col">Teléfono</th>
+			    <th scope="col">Codigo</th>
+			    <th scope="col">Marca</th>
+			    <th scope="col">Descripcion</th>
+			    <th scope="col">Tamaño</th>
+			    <th scope="col">Precio</th>
+			    <th scope="col">Categoria</th>
+			    <th scope="col">Imagen</th>
 			    <th>Acción</th>
 			  </tr>
 			</thead>
 			<tbody>
 			   	
-			<%for(Proveedor p : lista){; %>
+			<%for(Producto p : lista){; %>
 			<tr>
-			<td><% out.print(p.getRazonSocial()); %></td>
-			<td><% out.print(p.getCuit()); %></td>
-			<td><% out.print(p.getDomicilioCalle() + " " + p.getDomicilioNumero()); %></td>
-			<td><% out.print(p.getCorreoElectronico()); %></td>
-			<td><% out.print(p.getTelefono()); %></td>
+			<td><% out.print(p.getCodigo()); %></td>
+			<td><% out.print(p.getNombre()); %></td>
+			<td><% out.print(p.getDescripcion()); %></td>
+			<td><% out.print(p.getTamaño() + " " + p.getUnidadMedida()); %></td>
+			<td><% out.print(p.getPrecioVenta()); %></td>
+			<td><% out.print(p.getCategoria()); %></td>
+			<td><% out.print(p.getImagen()); %></td>
 			<td scope="row">
 				<button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModificacion"
 					onclick="configModificar(
                      		'<%out.print(p.getId());%>',
-                     		'<%out.print(p.getRazonSocial());%>',
-                     		'<%out.print(p.getCuit()); %>',
-                     		'<%out.print(p.getDomicilioCalle());%>',
-                     		'<%out.print(p.getDomicilioNumero());%>',
-                     		'<%out.print(p.getDomicilioPiso());%>',
-                     		'<%out.print(p.getDomicilioDepartamento());%>',
-                     		'<%out.print(p.getCorreoElectronico());%>',
-                     		'<%out.print(p.getTelefono());%>'	 
+                     		'<%out.print(p.getCodigo());%>',
+                     		'<%out.print(p.getNombre()); %>',
+                     		'<%out.print(p.getDescripcion());%>',
+                     		'<%out.print(p.getTamaño());%>',
+                     		'<%out.print(p.getUnidadMedida());%>',
+                     		'<%out.print(p.getPrecioVenta());%>',
+                     		'<%out.print(p.getCategoria());%>',
+                     		'<%out.print(p.getImagen());%>'	 
                      	 )"><i class="fas fa-edit"></i>				
 				</button>
 				&nbsp;&nbsp;
@@ -60,36 +64,36 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Nuevo proveedor</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">Nuevo producto</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="altaProveedor" method="post" action="ProveedorAlta">
+	        	<form role="form" id="altaProducto" method="post" action="ProductoAlta">
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Razón social">
+				    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT">
+				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Marca">
 				  </div>
 				  <div class="form-group">
-				    <div class="row">
-					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle">
-					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro.">
-				    </div>
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion">
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-50" id="piso" name="piso" placeholder="Piso">
-					    <input type="text" class="form-control text-left w-50" id="departamento" name="departamento" placeholder="Depto.">
+					    <input type="text" class="form-control text-left w-50" id="tamano" name="tamano" placeholder="Tamaño">
+					    <input type="text" class="form-control text-left w-50" id="umedida" name="umedida" placeholder="U. Medida">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono">
+				    <input type="text" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $">
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
+				    <input type="text" class="form-control text-left" id="categoria" name="categoria" placeholder="Categoria">
+				  </div>
+				  <div class="form-group">
+				    <input type="text" class="form-control text-left" id="imagen" name="imagen" placeholder="Imagen">
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -113,12 +117,12 @@
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="eliminaProveedor" method="post" action="ProveedorElimina">
+	        	<form role="form" id="eliminaProducto" method="post" action="ProductoElimina">
 				  <div class="form-group d-none">
 				    <input type="number" class="form-control" id="campo_idEliminar" name="idEliminar">
 				  </div>
 				  <div class="form-group">
-				    <label for="Confirmar">¿Está seguro que desea eliminar este proveedor?</label>
+				    <label for="Confirmar">¿Está seguro que desea eliminar este producto?</label>
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -136,40 +140,40 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">Modificar datos del proveedor</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">Modificar datos del producto</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 	        </div>
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
-	        	<form role="form" id="modificaProveedor" method="post" action="ProveedorModifica">
+	        	<form role="form" id="modificaProducto" method="post" action="ProductoModifica">
 				  <div class="form-group d-none">
 				    <label for="campo_idModificar">ID:</label>
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="campo_razonSocial" name="razonSocial" placeholder="Razón social">
+				    <input type="text" class="form-control" id="campo_codigo" name="codigo" placeholder="Codigo">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_cuit" name="cuit" placeholder="CUIT">
+				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Marca">
 				  </div>
 				  <div class="form-group">
-				    <div class="row">
-					    <input type="text" class="form-control text-left w-75" id="campo_calle" name="calle" placeholder="Calle">
-					    <input type="text" class="form-control text-left w-25" id="campo_numero" name="numero" placeholder="Nro.">
-				    </div>
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion">
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-50" id="campo_piso" name="piso" placeholder="Piso">
-					    <input type="text" class="form-control text-left w-50" id="campo_depto" name="departamento" placeholder="Depto.">
+				    	<input type="text" class="form-control text-left w-50" id="campo_tamano" name="tamano" placeholder="Tamaño">
+					    <input type="text" class="form-control text-left w-50" id="campo_umedida" name="umedida" placeholder="U. Medida">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="tel" class="form-control text-left" id="campo_telefono" name="telefono" placeholder="Teléfono">
+				    <input type="text" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $">
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control text-left" id="campo_correoElectronico" name="correoElectronico" placeholder="Correo electrónico">
+				    <input type="text" class="form-control text-left" id="campo_categoria" name="categoria" placeholder="Categoria">
+				  </div>
+				  <div class="form-group">
+				    <input type="text" class="form-control text-left" id="campo_imagen" name="imagen" placeholder="Imagen">
 				  </div>
 				  <div class="text-right">
 				  	<br>

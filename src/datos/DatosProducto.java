@@ -61,5 +61,121 @@ public class DatosProducto {
 		}
 		return productos;
 	}
+	
+	public void alta(Producto producto) throws SQLException, Excepcion {
+		PreparedStatement sentenciaSQL = null;
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("INSERT INTO productos (codigo, nombre, descripcion, "
+							+ "tamano, unidadMedida, precioVenta, categoria, imagen)"
+							+ "values (?,?,?,?,?,?,?,?)");
+			System.out.println("a ver q onda: " + producto.getNombre());
+			sentenciaSQL.setString(1, producto.getCodigo());
+			sentenciaSQL.setString(2, producto.getNombre());
+			sentenciaSQL.setString(3, producto.getDescripcion());
+			sentenciaSQL.setDouble(4, producto.getTamaño());
+			sentenciaSQL.setString(5, producto.getUnidadMedida());
+			sentenciaSQL.setDouble(6, producto.getPrecioVenta());
+			sentenciaSQL.setString(7, producto.getCategoria());
+			sentenciaSQL.setString(8, producto.getImagen());
+			sentenciaSQL.executeUpdate();
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("Algo salió mal intentando grabar el producto en la base de datos", excepcion);
+		}
+
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando dar de alta el producto");
+		}
+
+		// Este Try-Catch es para cerrar la conexión y sus resultados.
+		try {
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+	}
+	
+	public void baja(int id) throws SQLException, Excepcion {
+		PreparedStatement sentenciaSQL = null;
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("DELETE FROM productos WHERE id = ?");
+			sentenciaSQL.setInt(1, id);
+			sentenciaSQL.executeUpdate();
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("No se pudo borrar el producto de la base de datos", excepcion);
+		}
+		
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando borrar el producto");
+		}
+
+		// Este Try-Catch es para cerrar la conexión y sus resultados.
+		try {
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+	}
+	
+	public void modificacion(Producto producto) throws SQLException, Excepcion {
+		PreparedStatement sentenciaSQL = null;
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
+					.prepareStatement("UPDATE productos SET codigo = ?, nombre = ?, descripcion = ?, "
+							+ "tamano = ?, unidadMedida = ?, precioVenta = ?, categoria = ?, "
+							+ "imagen = ? WHERE id = ? ");
+			sentenciaSQL.setString(1, producto.getCodigo());
+			sentenciaSQL.setString(2, producto.getNombre());
+			sentenciaSQL.setString(3, producto.getDescripcion());
+			sentenciaSQL.setDouble(4, producto.getTamaño());
+			sentenciaSQL.setString(5, producto.getUnidadMedida());
+			sentenciaSQL.setDouble(6, producto.getPrecioVenta());
+			sentenciaSQL.setString(7, producto.getCategoria());
+			sentenciaSQL.setString(8, producto.getImagen());
+			sentenciaSQL.setInt(9, producto.getId());
+			sentenciaSQL.executeUpdate();
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("Algo salió mal intentando modificar el producto en la base de datos", excepcion);
+		}
+
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando modificar el producto");
+		}
+
+		// Este Try-Catch es para cerrar la conexión y sus resultados.
+		try {
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+	}
 
 }

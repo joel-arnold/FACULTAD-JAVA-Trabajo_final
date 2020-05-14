@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-success text-dark">
-  <a class="navbar-brand mb-0 h1 text-white" href="inicio.jsp"><i class="fas fa-dog"></i> De Pelos Pet Shop <i class="fas fa-paw"></i></a>
+  <a class="navbar-brand mb-0 h1 text-white" href="inicio.jsp"><i class="fas fa-dog"></i> De Pelos Mascotas <i class="fas fa-paw"></i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,9 +25,10 @@
           <i class="fas fa-barcode"></i> Productos
          </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">Perros</a>
-          <a class="dropdown-item">Gatos</a>
-          <a class="dropdown-item">Burros</a>
+          <a class="dropdown-item">Alimentos para Perros</a>
+          <a class="dropdown-item">Alimentos para Gatos</a>
+          <a class="dropdown-item">Alimentos para Aves</a>
+          <a class="dropdown-item">Pipetas y Accesorios</a>
          </div>
       </li>
    	<% }
@@ -67,15 +68,19 @@
     	        </li>
  	<% }
 	  if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+        session.getAttribute("privilegio") == ("EMPLEADO") ||
     	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <i class="fas fa-users-cog"></i> Panel de administración
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <%if(session.getAttribute("privilegio") != ("EMPLEADO")) {%>
           <a class="dropdown-item" href="privilegioAdmin.jsp"><i class="fas fa-window-restore"></i> Privilegios</a>
+          <%}%>
           <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
           <a class="dropdown-item" href="proveedoresAdmin.jsp"><i class="fas fa-portrait"></i> Proveedores</a>
+          <a class="dropdown-item" href="productosAdmin.jsp"><i class="fa fa-product-hunt"></i> Productos</a>
         </div>
       </li>
     <% } %>

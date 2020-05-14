@@ -12,6 +12,7 @@
     
     <!-- ACÁ ABAJO VA EL CONTENIDO -->
     <% if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	  session.getAttribute("privilegio") == ("EMPLEADO") ||
     	  session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
     <jsp:include page="vistas/administracion/proveedores.jsp"></jsp:include>
     <% } else{ 

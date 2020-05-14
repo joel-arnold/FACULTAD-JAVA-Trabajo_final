@@ -7,9 +7,10 @@
 
         <h4 class="my-4">Categorías</h4>
         <div class="list-group">
-          <a href="#" class="list-group-item">Perros</a>
-          <a href="#" class="list-group-item">Gatos</a>
-          <a href="#" class="list-group-item">Burros</a>
+          <a href="#" class="list-group-item">Alimentos para Perros</a>
+          <a href="#" class="list-group-item">Alimentos para Gatos</a>
+          <a href="#" class="list-group-item">Alimentos para Aves</a>
+          <a href="#" class="list-group-item">Pipetas y Accesorios</a>
         </div>
 
       </div>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>¡Uh, error!</title>
+    <title>¡Ups, error!</title>
   </head>
   
   <body>

@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>Tipos de cliente</title>
-    <script type="text/javascript" src="vistas/administracion/tiposCliente.Controlador.js"></script>
+    <title>Productos</title>
+    <script type="text/javascript" src="vistas/administracion/productos.Controlador.js"></script>
   </head>
   
   <body class="bg-light">
@@ -11,10 +11,10 @@
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     
     <!-- ACÁ ABAJO VA EL CONTENIDO -->
-  	<% if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
-  		  session.getAttribute("privilegio") == ("EMPLEADO") ||
+    <% if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
+    	  session.getAttribute("privilegio") == ("EMPLEADO") ||
     	  session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-    <jsp:include page="vistas/administracion/tiposCliente.jsp"></jsp:include>
+    <jsp:include page="vistas/administracion/productos.jsp"></jsp:include>
     <% } else{ 
     	  session.setAttribute("huboError", "si");
     	  session.setAttribute("causaError", null);
