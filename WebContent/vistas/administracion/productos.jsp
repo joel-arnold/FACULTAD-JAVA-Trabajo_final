@@ -90,7 +90,15 @@
 				    <input type="text" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="categoria" name="categoria" placeholder="Categoria">
+				    <label for="cat">Categoria:</label>
+				    <select name="categoria" id="categoria">
+		    			<% ControladorCategoriaProducto ctrl = new ControladorCategoriaProducto(); %>
+    					<% for (CategoriaProducto p : ctrl.buscarTodos()) {%>
+       					<option value="<% out.print(p.getIdCategoria());%>">
+       						<% out.print(p.getNombre());%>
+       					</option> 
+       					<%};%>
+					</select>
 				  </div>
 				  <div class="form-group">
 				    <input type="text" class="form-control text-left" id="imagen" name="imagen" placeholder="Imagen">
@@ -170,7 +178,15 @@
 				    <input type="text" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_categoria" name="categoria" placeholder="Categoria">
+				     <label for="cat">Categoria:</label>
+				    <select name="categoria" id="campo_categoria">
+		    			<% ControladorCategoriaProducto ctrlm = new ControladorCategoriaProducto(); %>
+    					<% for (CategoriaProducto p : ctrlm.buscarTodos()) {%>
+       					<option value="<% out.print(p.getIdCategoria());%>">
+       						<% out.print(p.getNombre());%>
+       					</option> 
+       					<%};%>
+					</select>
 				  </div>
 				  <div class="form-group">
 				    <input type="text" class="form-control text-left" id="campo_imagen" name="imagen" placeholder="Imagen">

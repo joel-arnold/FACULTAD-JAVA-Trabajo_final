@@ -81,6 +81,7 @@
           <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
           <a class="dropdown-item" href="proveedoresAdmin.jsp"><i class="fas fa-portrait"></i> Proveedores</a>
           <a class="dropdown-item" href="productosAdmin.jsp"><i class="fa fa-product-hunt"></i> Productos</a>
+          <a class="dropdown-item" href="categoriasProductoAdmin.jsp"><i class="fa fa-list-alt"></i> Categorias de Producto</a>
         </div>
       </li>
     <% } %>

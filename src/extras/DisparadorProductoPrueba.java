@@ -13,17 +13,9 @@ public class DisparadorProductoPrueba {
 
 	try {
 		sentenciaSQL = Conexion.crearInstancia().abrirConexion()
-				.prepareStatement("INSERT INTO productos (codigo, nombre, descripcion, "
-						+ "tamano, unidadMedida, precioVenta, categoria, imagen)"
-						+ "values (?,?,?,?,?,?,?,?)");
-		sentenciaSQL.setString(1, "14");
-		sentenciaSQL.setString(2, "gati");
-		sentenciaSQL.setString(3, "es de gato");
-		sentenciaSQL.setDouble(4, 15);
-		sentenciaSQL.setString(5, "kg");
-		sentenciaSQL.setDouble(6, 900);
-		sentenciaSQL.setString(7, "1");
-		sentenciaSQL.setString(8, null);
+				.prepareStatement("INSERT INTO categoria_producto (nombre, descripcion) values (?,?)");
+		sentenciaSQL.setString(1, "unaa");
+		sentenciaSQL.setString(2, "pba");
 		sentenciaSQL.executeUpdate();
 	}
 
