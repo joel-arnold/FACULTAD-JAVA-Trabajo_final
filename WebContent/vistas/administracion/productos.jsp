@@ -27,7 +27,7 @@
 			<td><% out.print(p.getCodigo()); %></td>
 			<td><% out.print(p.getNombre()); %></td>
 			<td><% out.print(p.getDescripcion()); %></td>
-			<td><% out.print(p.getTamaño() + " " + p.getUnidadMedida()); %></td>
+			<td><% out.print(p.getTamano() + " " + p.getUnidadMedida()); %></td>
 			<td><% out.print(p.getPrecioVenta()); %></td>
 			<td><% out.print(p.getCategoria()); %></td>
 			<td><% out.print(p.getImagen()); %></td>
@@ -38,7 +38,7 @@
                      		'<%out.print(p.getCodigo());%>',
                      		'<%out.print(p.getNombre()); %>',
                      		'<%out.print(p.getDescripcion());%>',
-                     		'<%out.print(p.getTamaño());%>',
+                     		'<%out.print(p.getTamano());%>',
                      		'<%out.print(p.getUnidadMedida());%>',
                      		'<%out.print(p.getPrecioVenta());%>',
                      		'<%out.print(p.getCategoria());%>',

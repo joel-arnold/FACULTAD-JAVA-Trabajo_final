@@ -27,7 +27,7 @@ public class DatosProducto {
 				producto.setCodigo(resultado.getString("codigo"));
 				producto.setNombre(resultado.getString("p.nombre"));
 				producto.setDescripcion(resultado.getString("descripcion"));
-				producto.setTamaño(resultado.getDouble("tamano"));
+				producto.setTamano(resultado.getDouble("tamano"));
 				producto.setUnidadMedida(resultado.getString("unidadMedida"));
 				producto.setPrecioVenta(resultado.getDouble("precioVenta"));
 				producto.setCategoria(resultado.getString("cp.nombre"));
@@ -73,7 +73,7 @@ public class DatosProducto {
 			sentenciaSQL.setString(1, producto.getCodigo());
 			sentenciaSQL.setString(2, producto.getNombre());
 			sentenciaSQL.setString(3, producto.getDescripcion());
-			sentenciaSQL.setDouble(4, producto.getTamaño());
+			sentenciaSQL.setDouble(4, producto.getTamano());
 			sentenciaSQL.setString(5, producto.getUnidadMedida());
 			sentenciaSQL.setDouble(6, producto.getPrecioVenta());
 			sentenciaSQL.setString(7, producto.getCategoria());
@@ -146,7 +146,7 @@ public class DatosProducto {
 			sentenciaSQL.setString(1, producto.getCodigo());
 			sentenciaSQL.setString(2, producto.getNombre());
 			sentenciaSQL.setString(3, producto.getDescripcion());
-			sentenciaSQL.setDouble(4, producto.getTamaño());
+			sentenciaSQL.setDouble(4, producto.getTamano());
 			sentenciaSQL.setString(5, producto.getUnidadMedida());
 			sentenciaSQL.setDouble(6, producto.getPrecioVenta());
 			sentenciaSQL.setString(7, producto.getCategoria());

@@ -8,7 +8,7 @@ public class Producto {
 	private String codigo;
 	private String nombre;
 	private String descripcion;
-	private double tamaño;
+	private double tamano;
 	private String unidadMedida;
 	private double precioVenta;
 	private Date fechaCompra;
@@ -27,7 +27,7 @@ public class Producto {
 		this.codigo = codigo;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.tamaño = tamano;
+		this.tamano = tamano;
 		this.unidadMedida = unidadMedida;
 		this.precioVenta = precioVenta;
 		this.categoria = categoria;
@@ -59,11 +59,11 @@ public class Producto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public double getTamaño() {
-		return tamaño;
+	public double getTamano() {
+		return tamano;
 	}
-	public void setTamaño(double tamaño) {
-		this.tamaño = tamaño;
+	public void setTamano(double tamano) {
+		this.tamano = tamano;
 	}
 	public String getUnidadMedida() {
 		return unidadMedida;
