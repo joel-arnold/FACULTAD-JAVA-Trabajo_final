@@ -1,93 +1,95 @@
-//$(document).ready(function(){
-//			$('#min').click(function(){
-//				if ($('#quantity').val() != 0)
-//					$('#quantity').val(parseInt($('#quantity').val()) - 1);
-//			});
-//			
-//			$('#plus').click(function(){
-//				$('#quantity').val(parseInt($('#quantity').val()) + 1);
-//			});  
-//		});
-
-
-/* FUNCIONALIDAD DEL CARRITO */
 window.onload = function () {
-    // Variables
+    
+	/* Archivo JSON con toda la informacion de los productos */
     let baseDeDatos = [
         {
             id: 1,
             nombre: 'Patata',
             precio: 1,
-            imagen: 'https://source.unsplash.com/random/500x500/?potato&sig=1'
+            imagen: 'img/burro.jpg'
         },
         {
             id: 2,
             nombre: 'Cebolla',
             precio: 1.2,
-            imagen: 'https://source.unsplash.com/random/500x500/?onion&sig=2'
+            imagen: 'img/bolsa_gato.jpg'
         },
         {
             id: 3,
             nombre: 'Calabacin',
             precio: 2.1,
-            imagen: 'https://source.unsplash.com/random/500x500/?zucchini&sig=3'
+            imagen: 'img/bolsa_perros.png'
         },
         {
             id: 4,
             nombre: 'Fresas',
             precio: 0.6,
-            imagen: 'https://source.unsplash.com/random/500x500/?burrs&sig=4'
+            imagen: 'img/bolsa_perros.png'
         }
 
     ]
+    
+    /* Creación de variables */
     let $items = document.querySelector('#items');
     let carrito = [];
     let total = 0;
     let $carrito = document.querySelector('#carrito');
     let $total = document.querySelector('#total');
+    
     // Funciones
     function renderItems() {
         for (let info of baseDeDatos) {
             // Estructura
-            let miNodo = document.createElement('div');
-            miNodo.classList.add('card', 'col-sm-4');
-//        	let elItem = document.createElement('div');
-//        	elItem.classList.add('col-lg-4', 'col-md-6', 'mb-4');
-            // Cuerpo
-            let miNodoCardBody = document.createElement('div');
-            miNodoCardBody.classList.add('card-body');
-//        	let imagen = document.createElement('div');
-//            imagen.classList.add('card-h100');
-//            imagen.src = "<%  %>";
+        	let elItem = document.createElement('div');
+        	elItem.classList.add('col-lg-4', 'col-md-6', 'mb-4');
+            /* Tarjeta (div para estilo) */
+        	let tarjetaItem = document.createElement('div');
+            tarjetaItem.classList.add('card', 'h-100');
         	/* Creo la imagen */
-        	//let miNodoCardBody = document.createElement('img');
-            //miNodoCardBody.classList.add('card-img-top');
-                    	
-            // Titulo
-            let miNodoTitle = document.createElement('h5');
-            miNodoTitle.classList.add('card-title');
-            miNodoTitle.textContent = info['nombre'];
-            // Imagen
-            let miNodoImagen = document.createElement('img');
-            miNodoImagen.classList.add('img-fluid');
-            miNodoImagen.setAttribute('src', info['imagen']);
-            // Precio
-            let miNodoPrecio = document.createElement('p');
-            miNodoPrecio.classList.add('card-text');
-            miNodoPrecio.textContent = info['precio'] + '$';
-            // Boton
-            let miNodoBoton = document.createElement('button');
-            miNodoBoton.classList.add('btn', 'btn-primary');
-            miNodoBoton.textContent = '+';
-            miNodoBoton.setAttribute('marcador', info['id']);
-            miNodoBoton.addEventListener('click', anyadirCarrito);
-            // Insertamos
-            miNodoCardBody.appendChild(miNodoImagen);
-            miNodoCardBody.appendChild(miNodoTitle);
-            miNodoCardBody.appendChild(miNodoPrecio);
-            miNodoCardBody.appendChild(miNodoBoton);
-            miNodo.appendChild(miNodoCardBody);
-            $items.appendChild(miNodo);
+            let enlaceImagen = document.createElement('a');
+            let imagenProducto = document.createElement('img');
+            imagenProducto.classList.add('card-img-top');
+            imagenProducto.src = info['imagen'];
+            enlaceImagen.appendChild(imagenProducto);
+            /* Creo el cuerpo de la tarjeta */
+            let cuerpoItem = document.createElement('div');
+            cuerpoItem.classList.add('card-body', 'text-center');
+            /* Nombre, tamaño y precio */
+            let nombreProducto = document.createElement('h5');
+            nombreProducto.classList.add('card-title');
+            nombreProducto.textContent = `${info['nombre']}`;
+            let descripcionProducto = document.createElement('p');
+            descripcionProducto.classList.add('card-text');
+            descripcionProducto.textContent = `Descripcion de ${info['nombre']}`;
+            let elPrecio = document.createElement('h6');
+            elPrecio.classList.add('card-subtitle');
+            let precioProducto = document.createElement('a');
+            precioProducto.textContent = `$${info['precio']}`;
+            elPrecio.appendChild(precioProducto);
+            /* Agrego al cuerpo del item el titulo y descripcion */
+            cuerpoItem.appendChild(nombreProducto);
+            cuerpoItem.appendChild(descripcionProducto);
+            cuerpoItem.appendChild(elPrecio);
+            /* Pie del producto (Boton de agregar al carrito)*/
+            let pieProducto = document.createElement('div');
+            pieProducto.classList.add('card-footer');
+            let contenidoPieProducto = document.createElement('div');
+            contenidoPieProducto.classList.add('d-flex', 'justify-content-center');
+            let botonPieProducto = document.createElement('button');
+            botonPieProducto.classList.add('btn', 'btn-dark', 'text-light', 'w-75');
+            botonPieProducto.setAttribute('marcador', info['id']);
+            botonPieProducto.addEventListener('click', anyadirCarrito);
+            console.log('El Producto es: ' + info['nombre']);
+            console.log('El infoID es: ' + info['id']);
+            botonPieProducto.textContent = 'Agregar';
+            contenidoPieProducto.appendChild(botonPieProducto);
+            pieProducto.appendChild(contenidoPieProducto);
+            /* Uno las partes */
+            tarjetaItem.appendChild(enlaceImagen);
+            tarjetaItem.appendChild(cuerpoItem);
+            tarjetaItem.appendChild(pieProducto);
+            elItem.appendChild(tarjetaItem);
+            $items.appendChild(elItem);
         }
     }
 
@@ -129,7 +131,8 @@ window.onload = function () {
             let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
                 return itemId === item ? total += 1 : total;
             }, 0);
-
+            /* Armo una variable para guardar inputs y poder manejarlos  con el + y el -*/
+            let itemInputId = `#item${item}`;
             // Creamos el nodo del item del carrito
             /* PRIMERO CREÉ EL "NODO", QUE ES UN DIV CON ROW PARA METER CADA ITEM */
             let miNodo = document.createElement('div');
@@ -173,7 +176,7 @@ window.onload = function () {
             input2.value = `${numeroUnidadesItem}`;
             input3.value = "+";
             input1.id = "min";
-            input2.id = "item";
+            input2.id = `item${item}`;
             input3.id = "plus";
             input1.style.cursor = "pointer";
             input2.size = 2;
@@ -193,17 +196,25 @@ window.onload = function () {
             miBoton.style.marginLeft = '1rem';
             miBoton.setAttribute('item', item);
             miBoton.addEventListener('click', borrarItemCarrito);
+            /* Armo el pedazo2 */
             div3.appendChild(miBoton);
             pedazo2.appendChild(div1);
             pedazo2.appendChild(div2);
             pedazo2.appendChild(div3);
-
-            /* ACÁ JUNTO TODO */
+            /* Funciones para que sumen y resten los botones + y - */
+            input1.addEventListener('click', () => {
+            	if((parseInt(input2.value)) != 0){
+            		input2.value = (parseInt(input2.value) - 1);
+            	}            	
+            });
+            input3.addEventListener('click', () => {
+            	input2.value = (parseInt(input2.value) + 1);
+            });
+            /* ACÁ JUNTO LAS PARTES */
             miNodo.appendChild(pedazo1);
             miNodo.appendChild(pedazo2);
             $carrito.appendChild(miNodo);
             $carrito.appendChild(linea);
-            console.log(indice);
         })
     }
 
@@ -223,7 +234,6 @@ window.onload = function () {
         // Renderizamos el precio en el HTML
         $total.textContent = totalDosDecimales;
     }
-    // Eventos
 
     // Inicio
     renderItems();
