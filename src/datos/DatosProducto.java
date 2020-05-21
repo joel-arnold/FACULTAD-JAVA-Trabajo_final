@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import org.json.*;
 
 import entidades.Producto;
 import extras.Excepcion;
@@ -34,6 +35,58 @@ public class DatosProducto {
 				producto.setImagen(resultado.getString("imagen"));
 				
 				productos.add(producto);
+			}
+		}
+
+		// Estos 2 "Catch" son para el "Try" principal (donde está la consulta a la base
+		// de datos)
+		catch (SQLException excepcion) {
+			throw new SQLException("Algo salió mal intentando buscar en la base de datos", excepcion);
+		}
+
+		catch (Excepcion excepcion) {
+			throw new Excepcion(excepcion, "Algo salió mal intentando buscar los productos");
+
+		}
+		// Este "Try-Catch" es para cerrar la conexión y sus resultados.
+		try {
+			if (resultado != null)
+				resultado.close();
+			if (sentenciaSQL != null)
+				sentenciaSQL.close();
+			Conexion.crearInstancia().cerrarConexion();
+		}
+
+		catch (SQLException excepcion) {
+			throw new SQLException("Error intentando cerrar la conexion a la base de datos", excepcion);
+		}
+		return productos;
+	}
+	
+	public JSONArray buscarTodosJSON() throws SQLException, Excepcion {
+		ResultSet resultado = null;
+		PreparedStatement sentenciaSQL = null;
+		JSONArray productos = new JSONArray();
+
+		try {
+			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
+					"SELECT * FROM productos p LEFT JOIN categoria_producto cp ON p.categoria = cp.id");
+			resultado = sentenciaSQL.executeQuery();
+
+			while (resultado.next()) {
+				JSONObject producto = new JSONObject();
+				
+				producto.put("id", resultado.getInt("id"));
+				producto.put("codigo", resultado.getString("codigo"));
+				producto.put("nombre", resultado.getString("p.nombre"));
+				producto.put("descripcion", resultado.getString("descripcion"));
+				producto.put("tamano", resultado.getDouble("tamano"));
+				producto.put("unidadMedida", resultado.getString("unidadMedida"));
+				producto.put("precioVenta", resultado.getDouble("precioVenta"));
+				producto.put("categoria", resultado.getString("cp.nombre"));
+				producto.put("imagen", resultado.getString("imagen"));
+				
+				productos.put(producto);
 			}
 		}
 

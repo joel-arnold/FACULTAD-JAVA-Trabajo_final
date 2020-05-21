@@ -1,7 +1,7 @@
 window.onload = function () {
-    
-	/* Archivo JSON con toda la informacion de los productos */
-    let baseDeDatos = [
+	
+	/* EN DESUSO, POR AHORA: Arreglo con toda la informacion de los productos */
+    /*let baseDeDatos = [
         {
             id: 1,
             nombre: 'Patata',
@@ -27,7 +27,7 @@ window.onload = function () {
             imagen: 'img/bolsa_perros.png'
         }
 
-    ]
+    ] */
     
     /* Creación de variables */
     let $items = document.querySelector('#items');
@@ -60,7 +60,7 @@ window.onload = function () {
             nombreProducto.textContent = `${info['nombre']}`;
             let descripcionProducto = document.createElement('p');
             descripcionProducto.classList.add('card-text');
-            descripcionProducto.textContent = `Descripcion de ${info['nombre']}`;
+            descripcionProducto.textContent = `${info['descripcion']}`;
             let elPrecio = document.createElement('h6');
             elPrecio.classList.add('card-subtitle');
             let precioProducto = document.createElement('a');
@@ -79,8 +79,6 @@ window.onload = function () {
             botonPieProducto.classList.add('btn', 'btn-dark', 'text-light', 'w-75');
             botonPieProducto.setAttribute('marcador', info['id']);
             botonPieProducto.addEventListener('click', anyadirCarrito);
-            console.log('El Producto es: ' + info['nombre']);
-            console.log('El infoID es: ' + info['id']);
             botonPieProducto.textContent = 'Agregar';
             contenidoPieProducto.appendChild(botonPieProducto);
             pieProducto.appendChild(contenidoPieProducto);
@@ -143,9 +141,9 @@ window.onload = function () {
             pedazo1.classList.add('col-12', 'text-sm-center', 'col-sm-12', 'text-md-left', 'col-md-4');
             let h6_1 = document.createElement('h6');
             h6_1.classList.add('product-name');
-            h6_1.innerHTML = `<strong>${miItem[0]['nombre']}</strong>`;
+            h6_1.innerHTML = `<b>${miItem[0]['nombre']}</b>`;
             let h6_2 = document.createElement('h6');
-            h6_2.innerHTML = `<small>Descripcion</small>`;
+            h6_2.innerHTML = `<small>${miItem[0]['descripcion']}</small>`;
             pedazo1.appendChild(h6_1);
             pedazo1.appendChild(h6_2);
             /* ESTE ES EL PEDAZO 2 (UN DIV) CON LA SEGUNDA PARTE DEL CODIGO DE CADA ITEM DEL CARRITO */

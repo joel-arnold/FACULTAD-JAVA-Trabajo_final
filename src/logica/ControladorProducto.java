@@ -16,9 +16,9 @@ public class ControladorProducto {
 		return datos.buscarTodos();
 	}
 
-	public ArrayList<Producto> buscarTodosJSON() throws SQLException, Excepcion {
+	public JSONArray buscarTodosJSON() throws SQLException, Excepcion {
 		datos = new DatosProducto();
-		return datos.buscarTodos();
+		return datos.buscarTodosJSON();
 	}
 	
 	public void alta(Producto producto) throws SQLException, Excepcion{
