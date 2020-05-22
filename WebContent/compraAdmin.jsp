@@ -25,7 +25,7 @@
 		 que permite armar un arreglo JS para leerlo en el siguiente
 		 script que hace todo. Tuve que hacerlo así porque sino no
 		 podía traer los productos con JAVA y tenía que traer un JSON
-		 que con las JSP no sé como funciona -->
+		 que con las JSP no lo pude hacer funcionar -->
 	<script type="text/javascript">
 		/* Arreglo con toda la informacion de los productos */
 	    let baseDeDatos = [
@@ -39,6 +39,7 @@
 		                descripcion: '<%out.print(productos.get(i).getDescripcion());%>',
 		                precio: <%out.print(productos.get(i).getPrecioVenta());%>,
 		                imagen: 'img/<% out.print(productos.get(i).getImagen());%>'
+		                	<% if((i+1) < (productos.size())) out.print(","); %>
 	            	}<% if((i+1) < (productos.size())) out.print(","); %> 
 			<% } %>
 	  	]

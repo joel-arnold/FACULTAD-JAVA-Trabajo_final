@@ -1,34 +1,5 @@
 window.onload = function () {
-	
-	/* EN DESUSO, POR AHORA: Arreglo con toda la informacion de los productos */
-    /*let baseDeDatos = [
-        {
-            id: 1,
-            nombre: 'Patata',
-            precio: 1,
-            imagen: 'img/burro.jpg'
-        },
-        {
-            id: 2,
-            nombre: 'Cebolla',
-            precio: 1.2,
-            imagen: 'img/bolsa_gato.jpg'
-        },
-        {
-            id: 3,
-            nombre: 'Calabacin',
-            precio: 2.1,
-            imagen: 'img/bolsa_perros.png'
-        },
-        {
-            id: 4,
-            nombre: 'Fresas',
-            precio: 0.6,
-            imagen: 'img/bolsa_perros.png'
-        }
 
-    ] */
-    
     /* Creación de variables */
     let $items = document.querySelector('#items');
     let carrito = [];
@@ -164,17 +135,24 @@ window.onload = function () {
             let input1 = document.createElement('input');
             let input2 = document.createElement('input');
             let input3 = document.createElement('input');
+            //let inputFantasma = document.createElement('input');
+            //let labelFantasma = document.createElement('label');
             input1.classList.add('minus');
             input2.classList.add('text-center');
             input3.classList.add('plus');
+            //inputFantasma.classList.add('d-none');
+            //inputFantasma.value = `cantidad`; 
+            //labelFantasma.textContent = `Este es el producto numero:`;
+            //inputFantasma.name = `${miItem[0]['id']}`; 
             input1.type = "button";
-            input2.name = "item";
+            input2.name = indice;
+            input2.type = "text";
             input3.type = "button";
             input1.value = "-";
             input2.value = `${numeroUnidadesItem}`;
             input3.value = "+";
             input1.id = "min";
-            input2.id = `item${item}`;
+            input2.id = indice;
             input3.id = "plus";
             input1.style.cursor = "pointer";
             input2.size = 2;
@@ -235,4 +213,5 @@ window.onload = function () {
 
     // Inicio
     renderItems();
+    
 }
