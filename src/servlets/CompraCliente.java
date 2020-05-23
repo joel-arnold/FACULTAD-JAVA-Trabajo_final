@@ -22,13 +22,28 @@ public class CompraCliente extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sesion = request.getSession(true);
-		String item0 = (String) request.getParameter("0").toString();
-		String item1 = (String) request.getParameter("1").toString();
-		
-		System.out.println(item0);
-		System.out.println(item1);
-		
 
+		System.out.println("El cliente es: " + sesion.getAttribute("nombreUsuario"));
+		
+		int i = 0;
+				
+		while((request.getParameter(String.valueOf(i)) != null)) {
+			String item = request.getParameter(String.valueOf(i));
+			int idProducto = Integer.parseInt(request.getParameter("id" + String.valueOf(i)));
+			int cantidad = Integer.parseInt(request.getParameter("cantidad" + String.valueOf(i)));
+			i++;
+			System.out.println("**********");
+			System.out.println("Item Nº: " + item);
+			System.out.println("ID de producto: " + idProducto);
+			System.out.println("Cantidad: " + cantidad);
+			System.out.println("************");
+		}
+		
+		if((request.getParameter("inputTotal")) != null){
+			Double total = Double.parseDouble(request.getParameter("inputTotal"));
+			System.out.println("El total es: " + total);
+		}
+		
+		
 	}
-
 }

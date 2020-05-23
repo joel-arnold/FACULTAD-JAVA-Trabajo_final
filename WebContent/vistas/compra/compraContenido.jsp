@@ -28,13 +28,15 @@
             
             <form action="CompraCliente" id="ticketCompra" name="ticketCompra" method="POST">
             	<div id="carrito" class="card-body">
+            		<p class="text-center" id="carroVacio">Aún no agregó productos al carrito</p>
 	            	<!-- Acá se genera todo automáticamente con JS -->
 	            </div>
 	            <div class="card-footer">
 	                <div class="container">
 	                    <div class="row">
 	                        <div class="col-8">
-	                            Total: <b>$</b><b id="total">0.00</b>
+	                            Total: <b>$</b><b id="total">0,00</b>
+	                            <input type="text" id="inputTotal" name="inputTotal" class="d-none">
 	                        </div>
 	                        <div class="col-4">
 	                        	<button type="submit" id="botonComprar" class="btn btn-success pull-right">Comprar</button>

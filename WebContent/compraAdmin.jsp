@@ -39,7 +39,6 @@
 		                descripcion: '<%out.print(productos.get(i).getDescripcion());%>',
 		                precio: <%out.print(productos.get(i).getPrecioVenta());%>,
 		                imagen: 'img/<% out.print(productos.get(i).getImagen());%>'
-		                	<% if((i+1) < (productos.size())) out.print(","); %>
 	            	}<% if((i+1) < (productos.size())) out.print(","); %> 
 			<% } %>
 	  	]
