@@ -11,6 +11,9 @@ public class Compra {
 	private double impuestos;
 	private double total;
 	private ArrayList<LineaDeCompra> lineasDeCompra;
+
+	public Compra() {
+	}
 	
 	public Compra(int id, Date fecha, double subtotal, double impuestos, double total,
 			ArrayList<LineaDeCompra> lineasDeCompra) {

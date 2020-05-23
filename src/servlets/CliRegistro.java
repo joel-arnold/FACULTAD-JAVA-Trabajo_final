@@ -30,7 +30,6 @@ public class CliRegistro extends HttpServlet {
 		ControladorPersona cp = new ControladorPersona();
 		String usuarioElegido = request.getParameter("usuario");
 		String contrasena1 = request.getParameter("contrasena1");
-		String contrasena2 = request.getParameter("contrasena2");
 		String apellido = request.getParameter("apellido");
 		String nombre = request.getParameter("nombre");
 		String tipoDoc = request.getParameter("tipoDoc");

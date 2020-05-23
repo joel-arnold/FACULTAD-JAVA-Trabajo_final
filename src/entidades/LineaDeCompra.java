@@ -2,20 +2,20 @@ package entidades;
 
 public class LineaDeCompra {
 	
-	private Producto producto;
+	private int idProducto;
 	private double cantidad;
 	
-	public LineaDeCompra(Producto producto, double cantidad) {
-		this.producto = producto;
+	public LineaDeCompra(int idProducto, double cantidad) {
+		this.idProducto = idProducto;
 		this.cantidad = cantidad;
 	}
 
-	public Producto getProducto() {
-		return producto;
+	public int getProducto() {
+		return idProducto;
 	}
 
-	public void setProducto(Producto producto) {
-		this.producto = producto;
+	public void setProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 
 	public double getCantidad() {

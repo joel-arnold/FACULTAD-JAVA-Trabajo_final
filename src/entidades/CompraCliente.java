@@ -4,21 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class CompraCliente extends Compra{
+	
+	int idCliente;
 
-	private Cliente cliente;
+	public CompraCliente() {
+		super();
+	}
 	
 	public CompraCliente(int id, Date fecha, double subtotal, double impuestos, double total,
-			ArrayList<LineaDeCompra> lineasDeCompra, Cliente cliente) {
+			ArrayList<LineaDeCompra> lineasDeCompra, int idCliente) {
 		super(id, fecha, subtotal, impuestos, total, lineasDeCompra);
-		this.cliente = cliente;
+		this.idCliente = idCliente;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public int getIdCliente() {
+		return idCliente;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 
 }
