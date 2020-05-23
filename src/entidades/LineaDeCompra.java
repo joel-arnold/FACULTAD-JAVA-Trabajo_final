@@ -5,6 +5,10 @@ public class LineaDeCompra {
 	private int idProducto;
 	private double cantidad;
 	
+	public LineaDeCompra() {
+		
+	}
+	
 	public LineaDeCompra(int idProducto, double cantidad) {
 		this.idProducto = idProducto;
 		this.cantidad = cantidad;

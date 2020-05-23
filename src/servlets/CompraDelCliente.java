@@ -51,9 +51,10 @@ public class CompraDelCliente extends HttpServlet {
 		cc.setLineasDeCompra(lineasCompra);
 
 		try {
-			ccc.compra(cc);
+			int nroCompra = ccc.compra(cc);
 			sesion.setAttribute("huboError", null);
-			response.sendRedirect("inicio.jsp");
+			sesion.setAttribute("nroCompra", nroCompra);
+			response.sendRedirect("compraConfirmacion.jsp");
 		} catch (SQLException e) {
 			sesion.setAttribute("huboError", "si");
 			sesion.setAttribute("mensajeError", e.getMessage().toString());

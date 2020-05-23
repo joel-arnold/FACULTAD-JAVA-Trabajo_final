@@ -2,7 +2,6 @@ package logica;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import org.json.*;
 import datos.DatosProducto;
 import entidades.Producto;
 import extras.Excepcion;

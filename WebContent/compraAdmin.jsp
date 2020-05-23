@@ -10,12 +10,18 @@
   	<%@page import="logica.ControladorProducto"%>
 	<%@page import="java.util.ArrayList"%>
 	<%@page import="entidades.Producto"%>
-	<%@page import="org.json.*"%>
   	<% session.setAttribute("huboError", null); %>
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     
     <!-- ACÁ ABAJO VA EL CONTENIDO -->
+    <% if(session.getAttribute("privilegio") == ("CLIENTE")){ %>
     <jsp:include page="vistas/compra/compraContenido.jsp"></jsp:include>
+    <% } else{ 
+    	  session.setAttribute("huboError", "si");
+    	  session.setAttribute("causaError", null);
+    	  session.setAttribute("mensajeError", "Para realizar una compra debe iniciar sesión como cliente.");
+    	  response.sendRedirect("error.jsp");
+     } %>
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>

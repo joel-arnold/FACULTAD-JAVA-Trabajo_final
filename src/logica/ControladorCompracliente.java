@@ -10,8 +10,8 @@ public class ControladorCompracliente {
 	
 	DatosCompraCliente datos = new DatosCompraCliente();
 	
-	public void compra(CompraCliente compraCliente) throws SQLException, Excepcion{
-		datos.compra(compraCliente);
+	public int compra(CompraCliente compraCliente) throws SQLException, Excepcion{
+		return datos.compra(compraCliente);
 	}
 	
 }

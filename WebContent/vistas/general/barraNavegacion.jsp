@@ -6,8 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
    	<% 
-	   if(session.getAttribute("privilegio") == ("CLIENTE") ||    	
-		session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+	   if(session.getAttribute("privilegio") == ("CLIENTE")){ %>
 		<li class="nav-item">
 		 <a class="nav-link active" href="compraAdmin.jsp"><i class="fas fa-shopping-cart"></i> Comprar</a>
 		</li>
