@@ -34,7 +34,7 @@
    	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
    	   	   	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
    	   	    <li class="nav-item active">
-   	   		 <a class="nav-link" href="#"><i class="fab fa-whatsapp"></i> Contacto</a>
+   	   		 <a class="nav-link" href="contactoAdmin.jsp"><i class="fab fa-whatsapp"></i> Contacto</a>
    	   	    </li>
     <% }
   	  	if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
