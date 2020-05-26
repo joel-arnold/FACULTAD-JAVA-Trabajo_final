@@ -10,12 +10,12 @@
 	    	<a href="https://wa.me/5493413366073?text=Hola%2C%20te%20contacto%20desde%20la%20web%20de%20la%20forrajer%C3%ADa%20para%20consultarte%20por...">
 	    	acá.</a>
 	    </p>
-    		
+
 	    <div class="row">
-	
+			
 	        <!--Grid column-->
 	        <div class="col-md-8 mb-md-0 mb-5">
-	            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+	            <form id="contact-form" name="contact-form" action="CorreoContacto" method="POST">
 	
 	                <!--Grid row-->
 	                <div class="row">
@@ -66,14 +66,15 @@
 	                    </div>
 	                </div>
 	                <!--Grid row-->
-	
+				
+				<div class="text-center">
+	                <button type="submit" class="btn btn-primary" id="botonEnviar">
+	                	<i class="fas fa-paper-plane"></i> Enviar consulta
+	                </button>
+	            </div>
+				
 	            </form>
 	
-	            <div class="text-center text-md-left">
-	                <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">
-	                	<i class="fas fa-paper-plane"></i> Enviar consulta
-	                </a>
-	            </div>
 	            <div class="status"></div>
 	        </div>
 	        <!--Grid column-->
@@ -82,8 +83,8 @@
 	        <div class="col-md-4 text-center">
 	            <ul class="list-unstyled mb-0">
 	                <li>
-	                	<i class="fas fa-map-marker-alt fa-2x"></i>
-	                    <p class="text-center">J. J. Paso 2000, Rosario, Santa Fe</p>
+	                	<a href="#mapa"><i class="fas fa-map-marker-alt fa-2x text-dark"></i></a>
+	                	<p class="text-center">J. J. Paso 2000, Rosario, Santa Fe</p>
 	                </li>
 	
 	                <li><a href="https://wa.me/5493413366073?text=Hola%2C%20te%20contacto%20desde%20la%20web%20de%20la%20forrajer%C3%ADa%20para%20consultarte%20por...">
@@ -91,15 +92,23 @@
 	                    <p>(0341) 153-366073</p>
 	                </li>
 	
-	                <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+	                <li>
+	                    <a href="mailto:depelosmascotas@gmail.com">
+	                    	<i class="fas fa-envelope mt-4 fa-2x text-dark"></i>
+	                    </a>
 	                    <p>depelosmascotas@gmail.com</p>
 	                </li>
 	            </ul>
 	        </div>
 	        <!--Grid column-->
-	
 	    </div>
 	
 	</section>
 	<!--Section: Contact v.2-->
+	
+	<div class="col-md-12 text-center">
+		<br><hr><br>
+		<h4> ¿Dónde estamos? Te lo mostramos en el mapa.</h4>
+		<iframe id="mapa" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Cavour%206000%2C%20Rosario%2C%20Santa%20Fe%2C%20Argentina&key=AIzaSyCbity2ROw6n9wyJLGduaPMOKYNYRyLOQU" allowfullscreen></iframe>	
+	</div>
 </div>

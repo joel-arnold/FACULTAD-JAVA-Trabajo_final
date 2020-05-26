@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>¡Bienvenido!</title>
+    <title>Contactanos</title>
   </head>
   
   <body class="bg-light">
@@ -13,6 +13,7 @@
     <jsp:include page="vistas/usuarios/contactoContenido.jsp"></jsp:include>
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
+    <script type="text/javascript" src="vistas/usuarios/contacto.Controlador.js"></script>
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>
   </body>
   
