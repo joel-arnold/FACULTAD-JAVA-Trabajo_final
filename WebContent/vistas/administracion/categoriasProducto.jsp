@@ -56,10 +56,10 @@
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
 	        	<form role="form" id="altaCategoriaProducto" method="post" action="CategoriaProductoAlta">
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Nombre">
+				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Nombre" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion" required="true">
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -118,10 +118,10 @@
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Nombre">
+				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Nombre" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion" required="true">
 				  </div>
 				  <div class="text-right">
 				  	<br>

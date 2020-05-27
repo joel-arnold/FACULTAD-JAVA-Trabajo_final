@@ -16,7 +16,6 @@
 			    <th scope="col">Tamaño</th>
 			    <th scope="col">Precio</th>
 			    <th scope="col">Categoria</th>
-			    <th scope="col">Imagen</th>
 			    <th>Acción</th>
 			  </tr>
 			</thead>
@@ -30,7 +29,6 @@
 			<td><% out.print(p.getTamano() + " " + p.getUnidadMedida()); %></td>
 			<td><% out.print(p.getPrecioVenta()); %></td>
 			<td><% out.print(p.getCategoria()); %></td>
-			<td><% out.print(p.getImagen()); %></td>
 			<td scope="row">
 				<button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#modalModificacion"
 					onclick="configModificar(
@@ -41,8 +39,7 @@
                      		'<%out.print(p.getTamano());%>',
                      		'<%out.print(p.getUnidadMedida());%>',
                      		'<%out.print(p.getPrecioVenta());%>',
-                     		'<%out.print(p.getCategoria());%>',
-                     		'<%out.print(p.getImagen());%>'	 
+                     		'<%out.print(p.getCategoria());%>' 
                      	 )"><i class="fas fa-edit"></i>				
 				</button>
 				&nbsp;&nbsp;
@@ -72,22 +69,22 @@
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
 	        	<form role="form" id="altaProducto" method="post" action="ProductoAlta">
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo">
+				    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Marca">
+				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Marca" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion" required="true">
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-50" id="tamano" name="tamano" placeholder="Tamaño">
-					    <input type="text" class="form-control text-left w-50" id="umedida" name="umedida" placeholder="U. Medida">
+					    <input type="number" min="0" class="form-control text-left w-50" id="tamano" name="tamano" placeholder="Tamaño" required="true">
+					    <input type="text" class="form-control text-left w-50" id="umedida" name="umedida" placeholder="U. Medida" required="true">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $">
+				    <input type="number" min="0" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $" required="true">
 				  </div>
 				  <div class="form-group">
 				    <label for="cat">Categoria:</label>
@@ -99,9 +96,6 @@
        					</option> 
        					<%};%>
 					</select>
-				  </div>
-				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="imagen" name="imagen" placeholder="Imagen">
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -160,22 +154,22 @@
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="campo_codigo" name="codigo" placeholder="Codigo">
+				    <input type="text" class="form-control" id="campo_codigo" name="codigo" placeholder="Codigo" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Marca">
+				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Marca" required="true">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion" required="true">
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-				    	<input type="text" class="form-control text-left w-50" id="campo_tamano" name="tamano" placeholder="Tamaño">
-					    <input type="text" class="form-control text-left w-50" id="campo_umedida" name="umedida" placeholder="U. Medida">
+				    	<input type="number" min="0" class="form-control text-left w-50" id="campo_tamano" name="tamano" placeholder="Tamaño" required="true">
+					    <input type="text" class="form-control text-left w-50" id="campo_umedida" name="umedida" placeholder="U. Medida" required="true">
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $">
+				    <input type="number" min="0" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $" required="true">
 				  </div>
 				  <div class="form-group">
 				     <label for="cat">Categoria:</label>
@@ -187,9 +181,6 @@
        					</option> 
        					<%};%>
 					</select>
-				  </div>
-				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_imagen" name="imagen" placeholder="Imagen">
 				  </div>
 				  <div class="text-right">
 				  	<br>
