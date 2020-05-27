@@ -24,8 +24,8 @@ public class DisparadorDePrueba {
 		String asunto = "algun asunto";
 		String cuerpo = "Cuerpo del mensaje";
 		
-		EnviadorDeCorreo edc = new EnviadorDeCorreo();
-		edc.enviarConGMail(destinatario, asunto, cuerpo);
+		//EnviadorDeCorreo edc = new EnviadorDeCorreo();
+		//edc.enviarConGMail(destinatario, asunto, cuerpo);
 		
 //		try {
 //			ae = ce.buscarTodos();	

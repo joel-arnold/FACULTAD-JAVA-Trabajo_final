@@ -15,7 +15,7 @@
 			
 	        <!--Grid column-->
 	        <div class="col-md-8 mb-md-0 mb-5">
-	            <form id="contact-form" name="contact-form" action="CorreoContacto" method="POST">
+	            <form id="contact-form" name="contact-form" action="ContactoCorreo" method="POST">
 	
 	                <!--Grid row-->
 	                <div class="row">
@@ -23,7 +23,7 @@
 	                    <!--Grid column-->
 	                    <div class="col-md-6">
 	                        <div class="md-form mb-0">
-	                            <input type="text" id="name" name="name" class="form-control">
+	                            <input type="text" id="name" name="nombre" class="form-control">
 	                            <label for="name" class="">Tu nombre</label>
 	                        </div>
 	                    </div>
@@ -32,8 +32,8 @@
 	                    <!--Grid column-->
 	                    <div class="col-md-6">
 	                        <div class="md-form mb-0">
-	                            <input type="text" id="email" name="email" class="form-control">
-	                            <label for="email" class="">Tu correo electrónico</label>
+	                            <input type="text" id="email" name="correoElectronico" class="form-control">
+	                            <label for="email" class="email">Tu correo electrónico</label>
 	                        </div>
 	                    </div>
 	                    <!--Grid column-->
@@ -45,7 +45,7 @@
 	                <div class="row">
 	                    <div class="col-md-12">
 	                        <div class="md-form mb-0">
-	                            <input type="text" id="subject" name="subject" class="form-control">
+	                            <input type="text" id="subject" name="motivoConsulta" class="form-control">
 	                            <label for="subject" class="">Motivo de la consulta</label>
 	                        </div>
 	                    </div>
@@ -59,7 +59,7 @@
 	                    <div class="col-md-12">
 	
 	                        <div class="md-form">
-	                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+	                            <textarea type="text" id="message" name="mensaje" rows="2" class="form-control md-textarea"></textarea>
 	                            <label for="message">Tu mensaje</label>
 	                        </div>
 	
@@ -108,7 +108,7 @@
 	
 	<div class="col-md-12 text-center">
 		<br><hr><br>
-		<h4> ¿Dónde estamos? Te lo mostramos en el mapa.</h4>
+		<h4>¿Dónde estamos?</h4>
 		<iframe id="mapa" width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=Cavour%206000%2C%20Rosario%2C%20Santa%20Fe%2C%20Argentina&key=AIzaSyCbity2ROw6n9wyJLGduaPMOKYNYRyLOQU" allowfullscreen></iframe>	
 	</div>
 </div>
