@@ -24,6 +24,7 @@
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>
+	
   </body>
   
 </html>

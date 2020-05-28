@@ -13,6 +13,7 @@
     <jsp:include page="vistas/inicio/contenidoPrincipal.jsp"></jsp:include>
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
+	<jsp:include page="vistas/general/piePagina.jsp"></jsp:include>
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>
   </body>
   

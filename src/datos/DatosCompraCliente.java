@@ -16,11 +16,11 @@ public class DatosCompraCliente {
 
 		try {
 			sentenciaSQL = Conexion.crearInstancia().abrirConexion().prepareStatement(
-					"INSERT INTO compra_cliente (total, cliente) values (?,?)",
+					"INSERT INTO compra_cliente (fecha, total, cliente) values (?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS);
-			//sentenciaSQL.setDate(0, compraCliente.getFecha());
-			sentenciaSQL.setDouble(1, compraCliente.getTotal());
-			sentenciaSQL.setInt(2, compraCliente.getIdCliente());
+			sentenciaSQL.setString(1, compraCliente.getFecha());
+			sentenciaSQL.setDouble(2, compraCliente.getTotal());
+			sentenciaSQL.setInt(3, compraCliente.getIdCliente());
 			sentenciaSQL.executeUpdate();
 			resultado = sentenciaSQL.getGeneratedKeys();
 			
@@ -44,14 +44,14 @@ public class DatosCompraCliente {
 		// Estos 2 "Catch" son para el "Try" principal (donde estï¿½ la consulta a la base
 		// de datos)
 		catch (SQLException excepcion) {
-			throw new SQLException("Algo salió mal intentando grabar la compra en la base de datos", excepcion);
+			throw new SQLException("Algo saliï¿½ mal intentando grabar la compra en la base de datos", excepcion);
 		}
 
 		catch (Excepcion excepcion) {
-			throw new Excepcion(excepcion, "Algo salió mal intentando registrar la compra");
+			throw new Excepcion(excepcion, "Algo saliï¿½ mal intentando registrar la compra");
 		}
 
-		// Este Try-Catch es para cerrar la conexión y sus resultados.
+		// Este Try-Catch es para cerrar la conexiï¿½n y sus resultados.
 		try {
 			if (sentenciaSQL != null)
 				sentenciaSQL.close();

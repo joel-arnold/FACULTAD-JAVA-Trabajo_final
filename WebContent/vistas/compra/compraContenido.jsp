@@ -2,11 +2,13 @@
 
 	<!-- SECCION DE CATEGORIAS -->
     <div class="col-lg-2">
-        <h4 class="my-4">Categorías</h4>
+        <h4 class="my-4">Filtrar por categoría</h4>
         <div class="list-group">
-            <a href="#" class="list-group-item">Perros</a>
-            <a href="#" class="list-group-item">Gatos</a>
-            <a href="#" class="list-group-item">Aves</a>
+            <a id="catTodas" class="list-group-item"><b>Todas las categorías</b></a>
+            <a id="catPerros" class="list-group-item">Perros</a>
+            <a id="catGatos" class="list-group-item">Gatos</a>
+            <a id="catAves" class="list-group-item">Aves</a>
+            <a id="catPipetas" class="list-group-item">Pipetas y accesorios</a>
         </div>
     </div>
 
@@ -35,7 +37,7 @@
 	                <div class="container">
 	                    <div class="row">
 	                        <div class="col-8">
-	                            Total: <b>$</b><b id="total">0,00</b>
+	                            Total: <b>$</b><b id="total">0.00</b>
 	                            <input type="text" id="inputTotal" name="inputTotal" class="d-none">
 	                        </div>
 	                        <div class="col-4">

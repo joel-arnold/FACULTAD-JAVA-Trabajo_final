@@ -6,84 +6,40 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
    	<% 
-	   if(session.getAttribute("privilegio") == ("CLIENTE")){ %>
-		<li class="nav-item">
-		 <a class="nav-link active" href="compraAdmin.jsp"><i class="fas fa-shopping-cart"></i> Comprar</a>
-		</li>
-	<% }   	
-   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
-    	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
-    	<li class="nav-item active">
-		 <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Promociones</a>
-      	</li>
-   	<% }
-   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
-   	   !(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
-        <li class="nav-item dropdown">
-         <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-barcode"></i> Productos
-         </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item">Alimentos para Perros</a>
-          <a class="dropdown-item">Alimentos para Gatos</a>
-          <a class="dropdown-item">Alimentos para Aves</a>
-          <a class="dropdown-item">Pipetas y Accesorios</a>
-         </div>
-      </li>
-   	<% }
-   	   if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
-   	   	   	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
-   	   	    <li class="nav-item active">
-   	   		 <a class="nav-link" href="contactoAdmin.jsp"><i class="fab fa-whatsapp"></i> Contacto</a>
-   	   	    </li>
-    <% }
-  	  	if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
-  	    session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
-  	    session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-  	      <li class="nav-item">
-  	        <a class="nav-link active" href="#"><i class="fas fa-exclamation-triangle"></i> Productos a vencer</a>
-  	      </li>
- 	<% }
-      if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
-    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
-    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-	    <li class="nav-item">
-          
-        </li>
-  	<% }
-      if(session.getAttribute("privilegio") == ("EMPLEADO") ||    	
-    	    	session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
-    	    	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-    		    <li class="nav-item dropdown">
-		         <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		           <i class="fas fa-truck-moving"></i> Pedidos
-		         </a>
-		         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		           <a class="dropdown-item" href="#">A preparar</a>
-		           <a class="dropdown-item" href="#">Preparados</a>
-		           <a class="dropdown-item" href="#">Entregados</a>
-		           <a class="dropdown-item" href="#">Cargar compra</a>
-		         </div>
-    	        </li>
+	   if(session.getAttribute("privilegio") == ("CLIENTE") ||
+		  session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
+			<li class="nav-item active">
+			 <a class="nav-link active" href="compraAdmin.jsp"><i class="fas fa-shopping-cart"></i> Comprar</a>
+			</li>
  	<% }
 	  if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
         session.getAttribute("privilegio") == ("EMPLEADO") ||
     	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <i class="fas fa-users-cog"></i> Panel de administración
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    		<li class="nav-item active">
+	   			<a class="nav-link" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
+	   	    </li>
+    		<li class="nav-item active">
+	   			<a class="nav-link" href="proveedoresAdmin.jsp"><i class="fas fa-portrait"></i> Proveedores</a>
+	   	    </li>
+    		<li class="nav-item active">
+		        <a class="nav-link" href="productosAdmin.jsp"><i class="fa fa-product-hunt"></i> Productos</a>
+	   	    </li>
+    		<li class="nav-item active">
+	   			<a class="nav-link" href="categoriasProductoAdmin.jsp"><i class="fa fa-list-alt"></i> Categorias de Producto</a>
+	   	    </li>
         <%if(session.getAttribute("privilegio") != ("EMPLEADO")) {%>
-          <a class="dropdown-item" href="privilegioAdmin.jsp"><i class="fas fa-window-restore"></i> Privilegios</a>
-          <%}%>
-          <a class="dropdown-item" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
-          <a class="dropdown-item" href="proveedoresAdmin.jsp"><i class="fas fa-portrait"></i> Proveedores</a>
-          <a class="dropdown-item" href="productosAdmin.jsp"><i class="fa fa-product-hunt"></i> Productos</a>
-          <a class="dropdown-item" href="categoriasProductoAdmin.jsp"><i class="fa fa-list-alt"></i> Categorias de Producto</a>
-        </div>
-      </li>
-    <% } %>
+          	<li class="nav-item active">
+	   			<a class="nav-link" href="privilegioAdmin.jsp"><i class="fas fa-window-restore"></i> Privilegios</a>
+	   	    </li>
+          <%}
+	  	}
+   	   	if(!(session.getAttribute("privilegio") == ("EMPLEADO")) &&    	
+   	   	   	!(session.getAttribute("privilegio") == ("ADMINISTRADOR"))){ %>
+	   	    <li class="nav-item active">
+	   		 <a class="nav-link" href="contactoAdmin.jsp"><i class="fab fa-whatsapp"></i> Contacto</a>
+	   	    </li>
+	   <% } %>
+	   	    
     </ul>
     
     <!-- SECCION DE USUARIO -->

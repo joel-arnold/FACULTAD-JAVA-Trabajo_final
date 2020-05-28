@@ -6,21 +6,17 @@ import java.util.Date;
 public class Compra {
 	
 	private int id;
-	private Date fecha;
-	private double subtotal;
-	private double impuestos;
+	private String fecha;
 	private double total;
 	private ArrayList<LineaDeCompra> lineasDeCompra;
 
 	public Compra() {
 	}
 	
-	public Compra(int id, Date fecha, double subtotal, double impuestos, double total,
+	public Compra(int id, String fecha, double total,
 			ArrayList<LineaDeCompra> lineasDeCompra) {
 		this.id = id;
 		this.fecha = fecha;
-		this.subtotal = subtotal;
-		this.impuestos = impuestos;
 		this.total = total;
 		this.lineasDeCompra = lineasDeCompra;
 	}
@@ -33,28 +29,12 @@ public class Compra {
 		this.id = id;
 	}
 	
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 	
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
-	}
-	
-	public double getSubtotal() {
-		return subtotal;
-	}
-	
-	public void setSubtotal(double subtotal) {
-		this.subtotal = subtotal;
-	}
-	
-	public double getImpuestos() {
-		return impuestos;
-	}
-	
-	public void setImpuestos(double impuestos) {
-		this.impuestos = impuestos;
 	}
 	
 	public double getTotal() {

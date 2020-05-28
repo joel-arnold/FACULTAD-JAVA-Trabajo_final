@@ -14,14 +14,15 @@
   	<jsp:include page="vistas/general/barraNavegacion.jsp"></jsp:include>
     
     <!-- ACÁ ABAJO VA EL CONTENIDO -->
-    <% if(session.getAttribute("privilegio") == ("CLIENTE")){ %>
+    <% if(session.getAttribute("privilegio") == ("CLIENTE") ||
+    	  session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
     <jsp:include page="vistas/compra/compraContenido.jsp"></jsp:include>
     <% } else{ 
     	  session.setAttribute("huboError", "si");
     	  session.setAttribute("causaError", null);
     	  session.setAttribute("mensajeError", "Para realizar una compra debe iniciar sesión como cliente.");
     	  response.sendRedirect("error.jsp");
-     } %>
+     } %>	
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>
@@ -42,6 +43,7 @@
 	                {
 		                id: <%out.print(productos.get(i).getId());%>,
 		                nombre: '<%out.print(productos.get(i).getNombre());%>',
+		                categoria: '<%out.print(productos.get(i).getCategoria());%>',
 		                descripcion: '<%out.print(productos.get(i).getDescripcion());%>',
 		                precio: <%out.print(productos.get(i).getPrecioVenta());%>,
 		                imagen: 'img/<% out.print(productos.get(i).getImagen());%>'

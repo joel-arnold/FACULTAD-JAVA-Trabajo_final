@@ -3,6 +3,7 @@ window.onload = function () {
     /* Creación de variables */
     let $items = document.querySelector('#items');
     let carrito = [];
+    let categoria;
     let total = 0;
     let $carrito = document.querySelector('#carrito');
     let $total = document.querySelector('#total');
@@ -65,7 +66,17 @@ window.onload = function () {
             tarjetaItem.appendChild(cuerpoItem);
             tarjetaItem.appendChild(pieProducto);
             elItem.appendChild(tarjetaItem);
-            $items.appendChild(elItem);
+            if(typeof categoria === 'undefined'){
+            	$items.appendChild(elItem);
+            } else if(categoria === 'gatos' && info['categoria'] === "Alimento para gatos"){
+            	$items.appendChild(elItem);
+            } else if(categoria === 'perros' && info['categoria'] === "Alimento para perros"){
+	        	$items.appendChild(elItem);
+	        } else if(categoria === 'aves' && info['categoria'] === "Alimento para aves"){
+	        	$items.appendChild(elItem);
+	        } else if(categoria === 'pipetas' && info['categoria'] === "Pipetas"){
+	        	$items.appendChild(elItem);
+	        }
         }
     }
 
@@ -216,11 +227,13 @@ window.onload = function () {
             		let itemcito = carrito.indexOf(id.toString());
             		carrito.splice(itemcito,1);
             		inputCantidad.value = (parseInt(inputCantidad.value) - 1);
+            		calcularTotal();
             	}            	
             });
             inputSumar.addEventListener('click', () => {
             	carrito.push(id.toString());
             	inputCantidad.value = (parseInt(inputCantidad.value) + 1);
+            	calcularTotal();
             });
             
             /* Acá junto todas las partes */
@@ -251,7 +264,38 @@ window.onload = function () {
         $total.textContent = totalDosDecimales;
         document.getElementById('inputTotal').value = totalDosDecimales;
     }
+    
+    /* Filtrado de productos por categoría */
+    document.getElementById('catGatos').addEventListener('click', () => {
+    	categoria = "gatos";
+    	document.querySelector('#items').innerHTML = "";
+    	renderizarProductos();
+    });
 
+    document.getElementById('catPerros').addEventListener('click', () => {
+    	categoria = "perros";
+    	document.querySelector('#items').innerHTML = "";
+    	renderizarProductos();
+    });    
+    
+    document.getElementById('catAves').addEventListener('click', () => {
+    	categoria = "aves";
+    	document.querySelector('#items').innerHTML = "";
+    	renderizarProductos();
+    });    
+    
+    document.getElementById('catTodas').addEventListener('click', () => {
+    	categoria = undefined;
+    	document.querySelector('#items').innerHTML = "";
+    	renderizarProductos();
+    });    
+    
+    document.getElementById('catPipetas').addEventListener('click', () => {
+    	categoria = "pipetas";
+    	document.querySelector('#items').innerHTML = "";
+    	renderizarProductos();
+    });    
+    
     // Inicio
     renderizarProductos();
 }
