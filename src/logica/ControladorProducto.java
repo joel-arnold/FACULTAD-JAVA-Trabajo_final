@@ -14,6 +14,11 @@ public class ControladorProducto {
 		datos = new DatosProducto();
 		return datos.buscarTodos();
 	}
+	
+	public ArrayList<Producto> buscarPorCategoria(String categoria) throws SQLException, Excepcion {
+		datos = new DatosProducto();
+		return datos.buscarPorCategoria(categoria);
+	}
 
 	public void alta(Producto producto) throws SQLException, Excepcion{
 		datos.alta(producto);

@@ -1,82 +1,76 @@
 window.onload = function () {
 
     /* Creación de variables */
-    let $items = document.querySelector('#items');
+    let $items = document.querySelector('#items')
     let carrito = [];
-    let categoria;
-    let total = 0;
-    let $carrito = document.querySelector('#carrito');
-    let $total = document.querySelector('#total');
+    let baseDeDatos
+    let categoriaElegida = ""
+    let total = 0
+    let $carrito = document.querySelector('#carrito')
+    let $total = document.querySelector('#total')
     
     // Funciones
-    function renderizarProductos() {
+    const renderizarProductos = () => {
         for (let info of baseDeDatos) {
-            // Estructura
-        	let elItem = document.createElement('div');
-        	elItem.classList.add('col-lg-4', 'col-md-6', 'mb-4');
-        	
-            /* Tarjeta (div para estilo) */
-        	let tarjetaItem = document.createElement('div');
-            tarjetaItem.classList.add('card', 'h-100');
-        	
-            /* Creo la imagen */
-            let enlaceImagen = document.createElement('a');
-            let imagenProducto = document.createElement('img');
-            imagenProducto.classList.add('card-img-top');
-            imagenProducto.src = info['imagen'];
-            enlaceImagen.appendChild(imagenProducto);
-            
-            /* Creo el cuerpo de la tarjeta */
-            let cuerpoItem = document.createElement('div');
-            cuerpoItem.classList.add('card-body', 'text-center');
-            
-            /* Nombre, tamaño y precio */
-            let nombreProducto = document.createElement('h5');
-            nombreProducto.classList.add('card-title');
-            nombreProducto.textContent = `${info['nombre']}`;
-            let descripcionProducto = document.createElement('p');
-            descripcionProducto.classList.add('card-text');
-            descripcionProducto.textContent = `${info['descripcion']}`;
-            let elPrecio = document.createElement('h6');
-            elPrecio.classList.add('card-subtitle');
-            let precioProducto = document.createElement('a');
-            precioProducto.textContent = `$${info['precio']}`;
-            elPrecio.appendChild(precioProducto);
-            
-            /* Agrego al cuerpo del item el titulo y descripcion */
-            cuerpoItem.appendChild(nombreProducto);
-            cuerpoItem.appendChild(descripcionProducto);
-            cuerpoItem.appendChild(elPrecio);
-            
-            /* Pie del producto (Boton de agregar al carrito)*/
-            let pieProducto = document.createElement('div');
-            pieProducto.classList.add('card-footer');
-            let contenidoPieProducto = document.createElement('div');
-            contenidoPieProducto.classList.add('d-flex', 'justify-content-center');
-            let botonPieProducto = document.createElement('button');
-            botonPieProducto.classList.add('btn', 'btn-dark', 'text-light', 'w-75');
-            botonPieProducto.setAttribute('marcador', info['id']);
-            botonPieProducto.addEventListener('click', anyadirCarrito);
-            botonPieProducto.textContent = 'Agregar';
-            contenidoPieProducto.appendChild(botonPieProducto);
-            pieProducto.appendChild(contenidoPieProducto);
-            
-            /* Uno las partes */
-            tarjetaItem.appendChild(enlaceImagen);
-            tarjetaItem.appendChild(cuerpoItem);
-            tarjetaItem.appendChild(pieProducto);
-            elItem.appendChild(tarjetaItem);
-            if(typeof categoria === 'undefined'){
-            	$items.appendChild(elItem);
-            } else if(categoria === 'gatos' && info['categoria'] === "Alimento para gatos"){
-            	$items.appendChild(elItem);
-            } else if(categoria === 'perros' && info['categoria'] === "Alimento para perros"){
-	        	$items.appendChild(elItem);
-	        } else if(categoria === 'aves' && info['categoria'] === "Alimento para aves"){
-	        	$items.appendChild(elItem);
-	        } else if(categoria === 'pipetas' && info['categoria'] === "Pipetas"){
-	        	$items.appendChild(elItem);
-	        }
+        	/* Por cada producto en la BD controlo si corresponde a la categoria elegida*/
+        	if((info['categoria'] === categoriaElegida) || categoriaElegida === ""){
+        		// Estructura
+            	let elItem = document.createElement('div');
+            	elItem.classList.add('col-lg-4', 'col-md-6', 'mb-4');
+            	
+                /* Tarjeta (div para estilo) */
+            	let tarjetaItem = document.createElement('div');
+                tarjetaItem.classList.add('card', 'h-100');
+            	
+                /* Creo la imagen */
+                let enlaceImagen = document.createElement('a');
+                let imagenProducto = document.createElement('img');
+                imagenProducto.classList.add('card-img-top');
+                imagenProducto.src = `img/${info.imagen}`;
+                enlaceImagen.appendChild(imagenProducto);
+                
+                /* Creo el cuerpo de la tarjeta */
+                let cuerpoItem = document.createElement('div');
+                cuerpoItem.classList.add('card-body', 'text-center');
+                
+                /* Nombre, tamaño y precio */
+                let nombreProducto = document.createElement('h5');
+                nombreProducto.classList.add('card-title');
+                nombreProducto.textContent = `${info.nombre}`;
+                let descripcionProducto = document.createElement('p');
+                descripcionProducto.classList.add('card-text');
+                descripcionProducto.textContent = `${info.descripcion}`;
+                let elPrecio = document.createElement('h6');
+                elPrecio.classList.add('card-subtitle');
+                let precioProducto = document.createElement('a');
+                precioProducto.textContent = `$${info.precioVenta}`;
+                elPrecio.appendChild(precioProducto);
+                
+                /* Agrego al cuerpo del item el titulo y descripcion */
+                cuerpoItem.appendChild(nombreProducto);
+                cuerpoItem.appendChild(descripcionProducto);
+                cuerpoItem.appendChild(elPrecio);
+                
+                /* Pie del producto (Boton de agregar al carrito)*/
+                let pieProducto = document.createElement('div');
+                pieProducto.classList.add('card-footer');
+                let contenidoPieProducto = document.createElement('div');
+                contenidoPieProducto.classList.add('d-flex', 'justify-content-center');
+                let botonPieProducto = document.createElement('button');
+                botonPieProducto.classList.add('btn', 'btn-dark', 'text-light', 'w-75');
+                botonPieProducto.setAttribute('marcador', info.id);
+                botonPieProducto.addEventListener('click', anyadirCarrito);
+                botonPieProducto.textContent = 'Agregar';
+                contenidoPieProducto.appendChild(botonPieProducto);
+                pieProducto.appendChild(contenidoPieProducto);
+                
+                /* Uno las partes */
+                tarjetaItem.appendChild(enlaceImagen);
+                tarjetaItem.appendChild(cuerpoItem);
+                tarjetaItem.appendChild(pieProducto);
+                elItem.appendChild(tarjetaItem);
+               	$items.appendChild(elItem);
+        	}            
         }
     }
 
@@ -152,7 +146,7 @@ window.onload = function () {
             div1.classList.add('col-3', 'col-sm-3', 'col-md-4', 'text-md-right');
             div1.style.paddingTop = "5px";
             let h6_3 = document.createElement('h6');
-            h6_3.innerHTML = `<h6><strong>$ ${miItem[0]['precio']} <span class="text-muted"> x</span></strong></h6>`;
+            h6_3.innerHTML = `<h6><strong>$ ${miItem[0]['precioVenta']} <span class="text-muted"> x</span></strong></h6>`;
             div1.appendChild(h6_3);
             
             /* Otra sub-parte del pedazo 2 */
@@ -256,7 +250,7 @@ window.onload = function () {
             let miItem = baseDeDatos.filter(function (itemBaseDatos) {
                 return itemBaseDatos['id'] == item;
             });
-            total = total + miItem[0]['precio'];
+            total = total + miItem[0]['precioVenta'];
         }
         // Formateamos el total para que solo tenga dos decimales
         let totalDosDecimales = total.toFixed(2);
@@ -265,42 +259,57 @@ window.onload = function () {
         document.getElementById('inputTotal').value = totalDosDecimales;
     }
     
-    /* Filtrado de productos por categoría */
-    document.getElementById('catGatos').addEventListener('click', () => {
-    	categoria = "gatos";
-    	document.querySelector('#items').innerHTML = "";
-    	renderizarProductos();
-    });
-
-    document.getElementById('catPerros').addEventListener('click', () => {
-    	categoria = "perros";
-    	document.querySelector('#items').innerHTML = "";
-    	renderizarProductos();
-    });    
-    
-    document.getElementById('catAves').addEventListener('click', () => {
-    	categoria = "aves";
-    	document.querySelector('#items').innerHTML = "";
-    	renderizarProductos();
-    });    
-    
-    document.getElementById('catTodas').addEventListener('click', () => {
-    	categoria = undefined;
-    	document.querySelector('#items').innerHTML = "";
-    	renderizarProductos();
-    });    
-    
-    document.getElementById('catPipetas').addEventListener('click', () => {
-    	categoria = "pipetas";
-    	document.querySelector('#items').innerHTML = "";
-    	renderizarProductos();
-    });    
-    
-    // Inicio
-    renderizarProductos();
-}
-
-/* Con esto evito que se haga efecto el clic en el boton "comprar" cuando el carro esta vacío*/
+    /* Con esto evito que haga efecto el clic en el boton "comprar" cuando el carro esta vacío*/
 	document.getElementById('botonComprar').addEventListener('click', (e) =>{
 		if(document.getElementById('carroVacio') != null) e.preventDefault();
 	});
+	
+	
+	/* Filtrado de productos por categoría */
+	document.getElementById('catTodas').addEventListener('click', () => {
+		categoriaElegida = ""
+		document.querySelector('#items').innerHTML = "";
+		renderizarProductos();
+	});    
+	
+	document.getElementById('catGatos').addEventListener('click', () => {
+		categoriaElegida = "Alimento para gatos";
+		document.querySelector('#items').innerHTML = "";
+		renderizarProductos();
+	});
+
+	document.getElementById('catPerros').addEventListener('click', () => {
+		categoriaElegida = "Alimento para perros";
+		document.querySelector('#items').innerHTML = "";
+		renderizarProductos();
+	});    
+	
+	document.getElementById('catAves').addEventListener('click', () => {
+		categoriaElegida = "Alimento para aves";
+		document.querySelector('#items').innerHTML = "";
+		renderizarProductos();
+	});    
+	
+	document.getElementById('catPipetas').addEventListener('click', () => {
+		categoriaElegida = "Pipetas";
+		document.querySelector('#items').innerHTML = "";
+		renderizarProductos();
+	});
+    
+	/* Función que arma la base de datos de productos al cargar la pagina
+	 * y, además, dibuja los productos en la misma */
+	const inicializarProductos = () => {
+			let xhr
+		    if (window.XMLHttpRequest) xhr = new XMLHttpRequest()
+		    else xhr = new ActiveXObject("Microsoft.XMLHTTP")
+		    xhr.open('GET', `ProductosPorCategoria?categoria=${categoriaElegida}`)
+		    xhr.addEventListener('load', (data) => {
+		    	baseDeDatos = JSON.parse(data.target.response)
+		    	renderizarProductos()
+		    })
+		    xhr.send()
+	}
+    
+	// Llamo a la función de carga de productos
+	inicializarProductos()	
+}
