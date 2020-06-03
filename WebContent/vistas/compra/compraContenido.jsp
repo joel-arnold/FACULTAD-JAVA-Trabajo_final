@@ -4,11 +4,11 @@
     <div class="col-lg-2">
         <h4 class="my-4">Filtrar por categoría</h4>
         <div class="list-group">
-            <a id="catTodas" class="list-group-item"><b>Todas las categorías</b></a>
-            <a id="catPerros" class="list-group-item">Perros</a>
-            <a id="catGatos" class="list-group-item">Gatos</a>
-            <a id="catAves" class="list-group-item">Aves</a>
-            <a id="catPipetas" class="list-group-item">Pipetas y accesorios</a>
+            <a id="catTodas" class="list-group-item" style="cursor: pointer">Todas las categorías</a>
+            <a id="catPerros" class="list-group-item" style="cursor: pointer">Perros</a>
+            <a id="catGatos" class="list-group-item" style="cursor: pointer">Gatos</a>
+            <a id="catAves" class="list-group-item" style="cursor: pointer">Aves</a>
+            <a id="catPipetas" class="list-group-item" style="cursor: pointer">Pipetas y accesorios</a>
         </div>
     </div>
 
