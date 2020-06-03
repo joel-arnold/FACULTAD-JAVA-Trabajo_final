@@ -14,6 +14,9 @@
     <!-- ACÁ ARRIBA VA EL CONTENIDO -->
     
 	<jsp:include page="vistas/general/piePagina.jsp"></jsp:include>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="vistas/inicio/contenidoPrincipal.controlador.js"></script>
 	<jsp:include page="vistas/general/referenciasPie.jsp"></jsp:include>
   </body>
   
