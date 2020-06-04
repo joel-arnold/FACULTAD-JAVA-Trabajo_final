@@ -5,7 +5,7 @@
 <div class="col-lg" style="padding-top:2%; padding-left:10%; padding-right:10%; padding-bottom:5%;">
 
 	<h1 class="text-center">De Pelos Mascotas</h1>
-	<p class="text-center">El mejor negocio de mascotas de Rosario y alrededores</p>
+	<p class="text-center">Las mejores marcas en un solo lugar!!</p>
 
   <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
     <ol class="carousel-indicators">
