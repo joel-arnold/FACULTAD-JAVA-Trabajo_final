@@ -94,7 +94,7 @@ CREATE TABLE `compra_cliente` (
   `total` double NOT NULL,
   `cliente` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,37 +103,8 @@ CREATE TABLE `compra_cliente` (
 
 LOCK TABLES `compra_cliente` WRITE;
 /*!40000 ALTER TABLE `compra_cliente` DISABLE KEYS */;
-INSERT INTO `compra_cliente` VALUES (68,'27-05-2020',1500,26),(69,'27-05-2020',775,32),(70,'27-05-2020',500,31),(71,'27-05-2020',1100,31),(72,'27-05-2020',1300,31),(73,'27-05-2020',1550,31);
+INSERT INTO `compra_cliente` VALUES (78,'01-06-2020',1400,31),(79,'01-06-2020',4409,31),(80,'02-06-2020',4627,31),(81,'02-06-2020',6873,31),(82,'02-06-2020',1605,31),(83,'02-06-2020',7180,31),(84,'02-06-2020',4300,31),(85,'02-06-2020',900,31);
 /*!40000 ALTER TABLE `compra_cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `compra_proveedor`
---
-
-DROP TABLE IF EXISTS `compra_proveedor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `compra_proveedor` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `fecha` datetime NOT NULL,
-  `subtotal` double NOT NULL,
-  `impuestos` double NOT NULL,
-  `total` double NOT NULL,
-  `proveedor` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `proveedor_idx` (`proveedor`),
-  CONSTRAINT `proveedor` FOREIGN KEY (`proveedor`) REFERENCES `proveedores` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `compra_proveedor`
---
-
-LOCK TABLES `compra_proveedor` WRITE;
-/*!40000 ALTER TABLE `compra_proveedor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `compra_proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -174,39 +145,6 @@ INSERT INTO `empleados` VALUES (2,'Ado','Emple','20159863442','DNI','15645646','
 UNLOCK TABLES;
 
 --
--- Table structure for table `item`
---
-
-DROP TABLE IF EXISTS `item`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `item` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idProducto` int NOT NULL,
-  `idProveedor` int DEFAULT NULL,
-  `fechaCompra` date NOT NULL,
-  `fechaVencimiento` date NOT NULL,
-  `fechaVenta` date DEFAULT NULL,
-  `precioCompra` double NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idProveedor_idx` (`idProveedor`),
-  KEY `idProducto_idx` (`idProducto`),
-  CONSTRAINT `idProducto` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`id`),
-  CONSTRAINT `idProveedor` FOREIGN KEY (`idProveedor`) REFERENCES `proveedores` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `item`
---
-
-LOCK TABLES `item` WRITE;
-/*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,5,NULL,'2020-05-11','2020-10-28',NULL,130),(2,5,NULL,'2020-05-11','2020-09-21','2020-05-11',130),(3,6,NULL,'2020-04-17','2020-09-23','2020-05-18',90),(4,6,NULL,'2020-04-18','2020-09-23',NULL,90);
-/*!40000 ALTER TABLE `item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `linea_compra_cliente`
 --
 
@@ -222,7 +160,7 @@ CREATE TABLE `linea_compra_cliente` (
   KEY `idCompra_idx` (`idCompra`),
   KEY `idProducto_idx` (`idProducto`),
   CONSTRAINT `idCompra` FOREIGN KEY (`idCompra`) REFERENCES `compra_cliente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,38 +169,8 @@ CREATE TABLE `linea_compra_cliente` (
 
 LOCK TABLES `linea_compra_cliente` WRITE;
 /*!40000 ALTER TABLE `linea_compra_cliente` DISABLE KEYS */;
-INSERT INTO `linea_compra_cliente` VALUES (98,68,8,1),(99,68,9,2),(100,68,5,4),(101,69,9,2),(102,69,5,1),(103,70,9,1),(104,70,8,1),(105,71,9,1),(106,71,8,4),(107,72,9,1),(108,72,8,1),(109,72,5,2),(110,72,6,1),(111,72,7,1),(112,73,6,1),(113,73,5,8);
+INSERT INTO `linea_compra_cliente` VALUES (123,78,5,8),(124,79,6,9),(125,79,11,2),(126,79,1,7),(127,79,13,2),(128,80,9,1),(129,80,5,2),(130,80,8,3),(131,80,6,4),(132,80,1,5),(133,80,11,6),(134,81,5,6),(135,81,8,6),(136,81,11,9),(137,81,7,8),(138,81,13,6),(139,82,6,3),(140,82,1,1),(141,82,8,4),(142,83,7,6),(143,83,13,2),(144,83,10,6),(145,83,11,5),(146,83,8,4),(147,83,5,1),(148,84,9,4),(149,84,13,12),(150,84,5,1),(151,84,8,1),(152,84,6,1),(153,84,7,1),(154,84,11,5),(155,85,9,1),(156,85,8,3);
 /*!40000 ALTER TABLE `linea_compra_cliente` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `linea_compra_proveedor`
---
-
-DROP TABLE IF EXISTS `linea_compra_proveedor`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `linea_compra_proveedor` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `idCompra` int NOT NULL,
-  `idProducto` int NOT NULL,
-  `cantidad` double NOT NULL,
-  `monto` double NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `idCompra_idx` (`idCompra`),
-  KEY `idProducto_idx` (`idProducto`),
-  CONSTRAINT `compra` FOREIGN KEY (`idCompra`) REFERENCES `compra_proveedor` (`id`),
-  CONSTRAINT `producto` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `linea_compra_proveedor`
---
-
-LOCK TABLES `linea_compra_proveedor` WRITE;
-/*!40000 ALTER TABLE `linea_compra_proveedor` DISABLE KEYS */;
-/*!40000 ALTER TABLE `linea_compra_proveedor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -316,7 +224,7 @@ CREATE TABLE `proveedores` (
   `correoElectronico` varchar(100) DEFAULT NULL,
   `telefono` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -325,7 +233,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
-INSERT INTO `proveedores` VALUES (8,'Proveedor 1','30555555559','Calle','1','9','2','perro@decumbia.com.ar','(0341) 4300155'),(9,'Proveedor 2','30222222224','Callecita','123','125','G','correo@electronico.com.ar','(0341) 4305203');
+INSERT INTO `proveedores` VALUES (8,'Proveedor 1','30555555559','Calle','1','9','2','mail@proveedor.com.ar','(0341) 4300155'),(9,'Proveedor 2','30222222224','Callecita','123','125','G','correo@electronico.com.ar','(0341) 4305203'),(11,'Proveedor 3','3099999999','Calle','90210','11','E','unpro@veedor.com.ar','03 03 456');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-27 20:57:31
+-- Dump completed on 2020-06-04 20:36:21
