@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
 
     /* Creación de variables */
     let items = document.querySelector('#items')
@@ -81,26 +81,29 @@ window.onload = function () {
     }
 
     function anyadirCarrito() {
-        // Añadimos el Nodo a nuestro carrito
+        /* Activo aviso al usuario si abandona la página */
+        window.onbeforeunload = () => "Ojo que perdés lo agregado al carrito"
+            // Añadimos el Nodo a nuestro carrito
         carrito.push(this.getAttribute('marcador'))
-        // Calculo el total
+            // Calculo el total
         calcularTotal()
-        // Renderizamos el carrito
+            // Renderizamos el carrito
         renderizarCarrito()
     }
 
     function borrarItemCarrito() {
         // Obtenemos el producto ID que hay en el boton pulsado
         let id = this.getAttribute('item')
-        // Borramos todos los productos
-        carrito = carrito.filter(function (carritoId) {
-            return carritoId !== id
-        })
-        // volvemos a renderizar
+            // Borramos todos los productos
+        carrito = carrito.filter(function(carritoId) {
+                return carritoId !== id
+            })
+            // volvemos a renderizar
         renderizarCarrito()
-        /* Pongo parrafo de vacio cuando ya no quedan items */
+            /* Pongo parrafo de vacio cuando ya no quedan items y desactivo aviso de salida*/
         if ($carrito.textContent == '') {
             $carrito.innerHTML = `<p class="text-center" id="carroVacio">A\u00FAn no agreg\u00F3 productos al carrito</p>`
+            window.onbeforeunload = null
         }
         // Calculamos de nuevo el precio
         calcularTotal()
@@ -114,15 +117,15 @@ window.onload = function () {
         let carritoSinDuplicados = [...new Set(carrito)]
 
         // Generamos los Nodos a partir de carrito
-        carritoSinDuplicados.forEach(function (item, indice) {
+        carritoSinDuplicados.forEach(function(item, indice) {
 
             // Obtenemos el item que necesitamos de la variable base de datos
-            let miItem = baseDeDatos.filter(function (itemBaseDatos) {
+            let miItem = baseDeDatos.filter(function(itemBaseDatos) {
                 return itemBaseDatos['id'] == item
             })
 
             // Cuenta el número de veces que se repite el producto
-            let numeroUnidadesItem = carrito.reduce(function (total, itemId) {
+            let numeroUnidadesItem = carrito.reduce(function(total, itemId) {
                 return itemId === item ? total += 1 : total
             }, 0)
 
@@ -250,31 +253,27 @@ window.onload = function () {
     function calcularTotal() {
         // Limpiamos precio anterior
         total = 0
-        // Recorremos el array del carrito
+            // Recorremos el array del carrito
         for (let item of carrito) {
             // De cada elemento obtenemos su precio
-            let miItem = baseDeDatos.filter(function (itemBaseDatos) {
+            let miItem = baseDeDatos.filter(function(itemBaseDatos) {
                 return itemBaseDatos['id'] == item
             })
             total = total + miItem[0]['precioVenta']
         }
         // Formateamos el total para que solo tenga dos decimales
         let totalDosDecimales = total.toFixed(2)
-        // Renderizamos el precio en el HTML
+            // Renderizamos el precio en el HTML
         $total.textContent = totalDosDecimales
         document.getElementById('inputTotal').value = totalDosDecimales
     }
 
-    /* Con esto evito que haga efecto el clic en el boton "comprar" cuando el carro esta vacío*/
+    /* Con esto evito que haga efecto el clic en el boton "comprar" cuando el carro esta
+     * vacío y, además, desactivo el aviso de perdida de productos elegidos si no lo está */
     document.getElementById('botonComprar').addEventListener('click', (e) => {
         if (document.getElementById('carroVacio') != null) e.preventDefault()
+        if (document.getElementById('carroVacio') == null) window.onbeforeunload = null
     })
-
-    /* Dar aviso de al usuario de que pierde lo elegido hasta el momento si sale de la página */
-    window.onbeforeunload = function () {
-        return '.'
-    };
-
 
     /* Filtrado de productos por categoría */
     enlaceTodas.addEventListener('click', () => {
@@ -332,8 +331,8 @@ window.onload = function () {
         renderizarProductos()
     })
 
-	/* Función que arma la base de datos de productos al cargar la pagina
-	 * y, además, dibuja los productos en la misma */
+    /* Función que arma la base de datos de productos al cargar la pagina
+     * y, además, dibuja los productos en la misma */
     const inicializarProductos = () => {
         fetch(`ProductosPorCategoria?categoria=${categoriaElegida}`)
             .then(res => res.ok ? Promise.resolve(res) : Promise.reject(res))
