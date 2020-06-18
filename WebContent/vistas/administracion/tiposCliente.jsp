@@ -61,7 +61,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="porcentaje">Porcentaje:</label>
-				    <input type="number"  min="0" class="form-control text-right" id="porcentaje" name="porcentaje" required="true">
+				    <input type="number"  min="0" max="100" class="form-control text-right" id="porcentaje" name="porcentaje" required="true">
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -125,7 +125,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="campo_porcentajeModificar">Porcentaje:</label>
-				    <input type="number"  min="0" class="form-control" id="campo_porcentajeModificar" name="porcentajeModificar" required="true">
+				    <input type="number"  min="0" max="100" class="form-control" id="campo_porcentajeModificar" name="porcentajeModificar" required="true">
 				  </div>
 				  <div class="text-right">
 				  	<br>
