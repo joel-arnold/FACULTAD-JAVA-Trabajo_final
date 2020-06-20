@@ -195,8 +195,7 @@ public class DatosProducto {
 		try {
 			sentenciaSQL = Conexion.crearInstancia().abrirConexion()
 					.prepareStatement("UPDATE productos SET codigo = ?, nombre = ?, descripcion = ?, "
-							+ "tamano = ?, unidadMedida = ?, precioVenta = ?, categoria = ?, "
-							+ "imagen = ? WHERE id = ? ");
+							+ "tamano = ?, unidadMedida = ?, precioVenta = ?, categoria = ? WHERE id = ? ");
 			sentenciaSQL.setString(1, producto.getCodigo());
 			sentenciaSQL.setString(2, producto.getNombre());
 			sentenciaSQL.setString(3, producto.getDescripcion());
@@ -204,8 +203,7 @@ public class DatosProducto {
 			sentenciaSQL.setString(5, producto.getUnidadMedida());
 			sentenciaSQL.setDouble(6, producto.getPrecioVenta());
 			sentenciaSQL.setString(7, producto.getCategoria());
-			sentenciaSQL.setString(8, producto.getImagen());
-			sentenciaSQL.setInt(9, producto.getId());
+			sentenciaSQL.setInt(8, producto.getId());
 			sentenciaSQL.executeUpdate();
 		}
 

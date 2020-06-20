@@ -21,7 +21,7 @@ function configModificar(id, codigo, nombre, descripcion, tamano, umedida, preci
 	inputDescripcion.val(descripcion);
 	inputTamano.val(tamano);
 	inputUmedida.val(umedida);
-	inputPrecioventa.val(precioventa)
+	inputPrecioventa.val(precioventa);
 	inputCategoria.val(categoria);
 	inputImagen.val(imagen);
 }

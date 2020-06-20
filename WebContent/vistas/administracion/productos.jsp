@@ -69,28 +69,28 @@
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
 	        	<form role="form" id="altaProducto" method="post" action="ProductoAlta">
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo" required="true">
+				    <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Codigo" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Marca" required="true">
+				    <input type="text" class="form-control text-left" id="nombre" name="nombre" placeholder="Marca" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion" required="true">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="descripcion" name="descripcion" placeholder="Descripcion" required>
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="number" min="0" class="form-control text-left w-50" id="tamano" name="tamano" placeholder="Tamaño" required="true">
-					    <input type="text" class="form-control text-left w-50" id="umedida" name="umedida" placeholder="U. Medida" required="true">
+					    <input type="number" min="0" class="form-control text-left w-50" id="tamano" name="tamano" placeholder="Tamaño" required>
+					    <input type="text" class="form-control text-left w-50" id="umedida" name="umedida" placeholder="U. Medida" required>
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="number" min="0" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $" required="true">
+				    <input type="number" min="0" class="form-control text-left" id="precioventa" name="precioventa" placeholder="Precio Venta $" required>
 				  </div>
 				  <div class="form-group">
 				    <label for="cat">Categoria:</label>
 				    <select name="categoria" id="categoria">
-		    			<% ControladorCategoriaProducto ctrl = new ControladorCategoriaProducto(); %>
-    					<% for (CategoriaProducto p : ctrl.buscarTodos()) {%>
+		    			<% ControladorCategoriaProducto ctrla = new ControladorCategoriaProducto(); %>
+    					<% for (CategoriaProducto p : ctrla.buscarTodos()) {%>
        					<option value="<% out.print(p.getIdCategoria());%>">
        						<% out.print(p.getNombre());%>
        					</option> 
@@ -154,29 +154,29 @@
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="campo_codigo" name="codigo" placeholder="Codigo" required="true">
+				    <input type="text" class="form-control" id="campo_codigo" name="codigo" placeholder="Codigo" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Marca" required="true">
+				    <input type="text" class="form-control text-left" id="campo_nombre" name="nombre" placeholder="Marca" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion" required="true">
+				    <input type="text" style="width:365px; height:100px;" class="form-control text-left" id="campo_descripcion" name="descripcion" placeholder="Descrpcion" required>
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-				    	<input type="number" min="0" class="form-control text-left w-50" id="campo_tamano" name="tamano" placeholder="Tamaño" required="true">
-					    <input type="text" class="form-control text-left w-50" id="campo_umedida" name="umedida" placeholder="U. Medida" required="true">
+				    	<input type="number" min="0" class="form-control text-left w-50" id="campo_tamano" name="tamano" placeholder="Tamaño" required>
+					    <input type="text" class="form-control text-left w-50" id="campo_umedida" name="umedida" placeholder="U. Medida" required>
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="number" min="0" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $" required="true">
+				    <input type="number" min="0" class="form-control text-left" id="campo_precioventa" name="precioventa" placeholder="Precio Venta $" required>
 				  </div>
 				  <div class="form-group">
 				     <label for="cat">Categoria:</label>
 				    <select name="categoria" id="campo_categoria">
 		    			<% ControladorCategoriaProducto ctrlm = new ControladorCategoriaProducto(); %>
     					<% for (CategoriaProducto p : ctrlm.buscarTodos()) {%>
-       					<option value="<% out.print(p.getIdCategoria());%>">
+       					<option selected value="<% out.print(p.getIdCategoria());%>">
        						<% out.print(p.getNombre());%>
        					</option> 
        					<%};%>

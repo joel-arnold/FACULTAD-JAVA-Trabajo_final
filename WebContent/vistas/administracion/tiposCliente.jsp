@@ -57,11 +57,11 @@
 	        	<form role="form" id="altaTC" method="post" action="TcAlta">
 				  <div class="form-group">
 				    <label for="descripcion">Tipo:</label>
-				    <input type="text" class="form-control" id="descripcion" name="descripcion" required="true">
+				    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
 				  </div>
 				  <div class="form-group">
 				    <label for="porcentaje">Porcentaje:</label>
-				    <input type="number"  min="0" max="100" class="form-control text-right" id="porcentaje" name="porcentaje" required="true">
+				    <input type="number"  min="0" max="100" class="form-control text-right" id="porcentaje" name="porcentaje" required>
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -121,11 +121,11 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="campo_descripcionModificar">Descripción:</label>
-				    <input type="text" class="form-control" id="campo_descripcionModificar" name="descripcionModificar" required="true">
+				    <input type="text" class="form-control" id="campo_descripcionModificar" name="descripcionModificar" required>
 				  </div>
 				  <div class="form-group">
 				    <label for="campo_porcentajeModificar">Porcentaje:</label>
-				    <input type="number"  min="0" max="100" class="form-control" id="campo_porcentajeModificar" name="porcentajeModificar" required="true">
+				    <input type="number"  min="0" max="100" class="form-control" id="campo_porcentajeModificar" name="porcentajeModificar" required>
 				  </div>
 				  <div class="text-right">
 				  	<br>

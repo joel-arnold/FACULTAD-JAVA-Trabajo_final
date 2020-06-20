@@ -68,15 +68,15 @@
 	        <div class="modal-body text-left" style="margin-left:10%; margin-right:10%">
 	        	<form role="form" id="altaProveedor" method="post" action="ProveedorAlta">
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Razón social" required="true">
+				    <input type="text" class="form-control" id="razonSocial" name="razonSocial" placeholder="Razón social" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="number"  min="0" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT" required="true">
+				    <input type="number"  min="0" class="form-control text-left" id="cuit" name="cuit" placeholder="CUIT" required>
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle" required="true">
-					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro." required="true">
+					    <input type="text" class="form-control text-left w-75" id="calle" name="calle" placeholder="Calle" required>
+					    <input type="text" class="form-control text-left w-25" id="numero" name="numero" placeholder="Nro." required>
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -86,10 +86,10 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono" required="true">
+				    <input type="tel" class="form-control text-left" id="telefono" name="telefono" placeholder="Teléfono" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico" required="true">
+				    <input type="email" class="form-control text-left" id="correoElectronico" name="correoElectronico" placeholder="Correo electrónico" required>
 				  </div>
 				  <div class="text-right">
 				  	<br>
@@ -148,15 +148,15 @@
 				    <input type="number" class="form-control" id="campo_idModificar" name="idModificar">
 				  </div>
 				  <div class="form-group">
-				    <input type="text" class="form-control" id="campo_razonSocial" name="razonSocial" placeholder="Razón social" required="true">
+				    <input type="text" class="form-control" id="campo_razonSocial" name="razonSocial" placeholder="Razón social" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="number"  min="0" class="form-control text-left" id="campo_cuit" name="cuit" placeholder="CUIT" required="true">
+				    <input type="number"  min="0" class="form-control text-left" id="campo_cuit" name="cuit" placeholder="CUIT" required>
 				  </div>
 				  <div class="form-group">
 				    <div class="row">
-					    <input type="text" class="form-control text-left w-75" id="campo_calle" name="calle" placeholder="Calle" required="true">
-					    <input type="text" class="form-control text-left w-25" id="campo_numero" name="numero" placeholder="Nro." required="true">
+					    <input type="text" class="form-control text-left w-75" id="campo_calle" name="calle" placeholder="Calle" required>
+					    <input type="text" class="form-control text-left w-25" id="campo_numero" name="numero" placeholder="Nro." required>
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -166,10 +166,10 @@
 				    </div>
 				  </div>
 				  <div class="form-group">
-				    <input type="tel" class="form-control text-left" id="campo_telefono" name="telefono" placeholder="Teléfono" required="true">
+				    <input type="tel" class="form-control text-left" id="campo_telefono" name="telefono" placeholder="Teléfono" required>
 				  </div>
 				  <div class="form-group">
-				    <input type="email" class="form-control text-left" id="campo_correoElectronico" name="correoElectronico" placeholder="Correo electrónico" required="true">
+				    <input type="email" class="form-control text-left" id="campo_correoElectronico" name="correoElectronico" placeholder="Correo electrónico" required>
 				  </div>
 				  <div class="text-right">
 				  	<br>
