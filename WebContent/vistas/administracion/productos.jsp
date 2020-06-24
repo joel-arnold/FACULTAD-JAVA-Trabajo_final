@@ -39,7 +39,7 @@
                      		'<%out.print(p.getTamano());%>',
                      		'<%out.print(p.getUnidadMedida());%>',
                      		'<%out.print(p.getPrecioVenta());%>',
-                     		'<%out.print(p.getCategoria());%>' 
+                     		'<%out.print(1);%>'
                      	 )"><i class="fas fa-edit"></i>				
 				</button>
 				&nbsp;&nbsp;

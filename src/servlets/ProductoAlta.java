@@ -33,7 +33,7 @@ public class ProductoAlta extends HttpServlet {
 		String umedida = request.getParameter("umedida");
 		Double precioventa = Double.parseDouble(request.getParameter("precioventa"));
 		String categoria = request.getParameter("categoria");
-		String imagen = "imagen.jpg";
+		String imagen = "bolsa_perros.png";
 		
 		Producto producto = new Producto(codigo, nombre, descripcion, tamano, umedida, precioventa, categoria, imagen);
 		try {
