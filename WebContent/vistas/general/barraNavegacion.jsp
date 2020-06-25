@@ -16,6 +16,9 @@
         session.getAttribute("privilegio") == ("EMPLEADO") ||
     	session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
     		<li class="nav-item active">
+	   			<a class="nav-link" href="ventasAdmin.jsp"><i class="fa fa-shopping-bag"></i> Ventas</a>
+	   	    </li>
+    		<li class="nav-item active">
 	   			<a class="nav-link" href="tcAdmin.jsp"><i class="fas fa-user-tag"></i> Tipos de cliente</a>
 	   	    </li>
     		<li class="nav-item active">

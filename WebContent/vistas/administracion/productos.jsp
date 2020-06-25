@@ -39,7 +39,17 @@
                      		'<%out.print(p.getTamano());%>',
                      		'<%out.print(p.getUnidadMedida());%>',
                      		'<%out.print(p.getPrecioVenta());%>',
-                     		'<%out.print(1);%>'
+                     		'<%String nombreCate = p.getCategoria();
+                     		ControladorCategoriaProducto ctrlcate = new ControladorCategoriaProducto();
+                     		ArrayList<CategoriaProducto> cates;
+                     		int ide = 1;
+                     		cates = ctrlcate.buscarTodos();
+                     		for (CategoriaProducto cate: cates) {
+                     		      if (cate.getNombre() == nombreCate) {
+                     		    	  ide = cate.getIdCategoria();
+                     		    	  }
+                     		    } 
+                     		out.print(ide);%>'
                      	 )"><i class="fas fa-edit"></i>				
 				</button>
 				&nbsp;&nbsp;
