@@ -1,5 +1,4 @@
-<div class="container-fluid" style="text-align:center">
-   <br><br>
+<div class="container-fluid" style="text-align:center; padding-top: 4%">
    <div class="jumbotron bg-dark text-light" style="margin-left:20%; margin-right:20%">
    	  <h1 class="display-4">Mi perfil</h1>
 	  <hr class="my-4 bg-light">

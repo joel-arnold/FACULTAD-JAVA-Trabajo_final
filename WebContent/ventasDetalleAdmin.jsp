@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>Productos</title>
-    <script type="text/javascript" src="vistas/ventas/ventas.Controlador.js"></script>
+    <title>Detalle de la venta</title>
   </head>
   
   <body class="bg-light">
@@ -14,7 +13,7 @@
     <% if(session.getAttribute("privilegio") == ("ADMINISTRADOR") ||
     	  session.getAttribute("privilegio") == ("EMPLEADO") ||
     	  session.getAttribute("privilegio") == ("SUPERUSUARIO")){ %>
-    <jsp:include page="vistas/ventas/ventasContenido.jsp"></jsp:include>
+    <jsp:include page="vistas/ventas/ventasDetalleContenido.jsp"></jsp:include>
     <% } else{ 
     	  session.setAttribute("huboError", "si");
     	  session.setAttribute("causaError", null);

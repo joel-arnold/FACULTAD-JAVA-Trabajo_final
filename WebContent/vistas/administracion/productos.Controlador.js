@@ -4,7 +4,7 @@ function configIdEliminar(id) {
 }
 
 function configModificar(id, codigo, nombre, descripcion, tamano, umedida, precioventa,
-		categoria, imagen) {
+		categoria) {
 	var inputIdModificar = $('#campo_idModificar'),
 		inputCodigo = $('#campo_codigo'),
 		inputNombre = $('#campo_nombre'),
@@ -12,8 +12,7 @@ function configModificar(id, codigo, nombre, descripcion, tamano, umedida, preci
 		inputTamano = $('#campo_tamano'),
 		inputUmedida = $('#campo_umedida'),
 		inputPrecioventa = $('#campo_precioventa'),
-		inputCategoria = $('#campo_categoria'),
-		inputImagen = $('#campo_imagen');
+		inputCategoria = $('#campo_categoria');
 
 	inputIdModificar.val(id);
 	inputCodigo.val(codigo);
@@ -23,5 +22,4 @@ function configModificar(id, codigo, nombre, descripcion, tamano, umedida, preci
 	inputUmedida.val(umedida);
 	inputPrecioventa.val(precioventa);
 	inputCategoria.val(categoria);
-	inputImagen.val(imagen);
 }

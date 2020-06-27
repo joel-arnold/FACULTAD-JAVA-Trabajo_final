@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +33,19 @@ public class ProductoAlta extends HttpServlet {
 		Double precioventa = Double.parseDouble(request.getParameter("precioventa"));
 		String categoria = request.getParameter("categoria");
 		String imagen = "bolsa_perros.png";
+		
+		if(categoria.equals("1")){
+			imagen = "bolsa_perros.png";		
+		}
+		else if(categoria.equals("2")){
+			imagen = "bolsa_gatos.jpg";	
+		}
+		else if(categoria.equals("4")){
+			imagen = "bolsa_aves.jpeg";	
+		}
+		else if(categoria.equals("5")){
+			imagen = "caja_pipeta.jpg";
+		}
 		
 		Producto producto = new Producto(codigo, nombre, descripcion, tamano, umedida, precioventa, categoria, imagen);
 		try {
