@@ -3,7 +3,8 @@ package entidades;
 public class LineaDeVenta {
 	
 	private String nombreProducto;
-	private int cantidad, precioUnitario;
+	private int idProducto;
+	private Double cantidad, precioUnitario;
 	
 	public String getNombreProducto() {
 		return nombreProducto;
@@ -11,17 +12,23 @@ public class LineaDeVenta {
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
 	}
-	public int getCantidad() {
+	public Double getCantidad() {
 		return cantidad;
 	}
-	public void setCantidad(int cantidad) {
+	public void setCantidad(Double cantidad) {
 		this.cantidad = cantidad;
 	}
-	public int getPrecioUnitario() {
+	public Double getPrecioUnitario() {
 		return precioUnitario;
 	}
-	public void setPrecioUnitario(int precioUnitario) {
+	public void setPrecioUnitario(Double precioUnitario) {
 		this.precioUnitario = precioUnitario;
+	}
+	public int getIdProducto() {
+		return idProducto;
+	}
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
 	}
 	
 }

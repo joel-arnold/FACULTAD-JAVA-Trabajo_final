@@ -8,8 +8,8 @@ public class Venta {
 	private String fecha;
 	private Double total;
 	private int id_cliente;
-	private String nombre_cliente;
-	private String apellido_cliente;
+	private String nombre_cliente, apellido_cliente, telefono, correoElectronico, domicilioCalle, domicilioNumero,
+			domicilioPiso, domicilioDpto;
 	private ArrayList<LineaDeVenta> lineas;
 
 	public int getId() {
@@ -58,6 +58,54 @@ public class Venta {
 
 	public void setApellido_cliente(String apellido_cliente) {
 		this.apellido_cliente = apellido_cliente;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
+	}
+
+	public String getDomicilioCalle() {
+		return domicilioCalle;
+	}
+
+	public void setDomicilioCalle(String domicilioCalle) {
+		this.domicilioCalle = domicilioCalle;
+	}
+
+	public String getDomicilioNumero() {
+		return domicilioNumero;
+	}
+
+	public void setDomicilioNumero(String domicilioNumero) {
+		this.domicilioNumero = domicilioNumero;
+	}
+
+	public String getDomicilioPiso() {
+		return domicilioPiso;
+	}
+
+	public void setDomicilioPiso(String domicilioPiso) {
+		this.domicilioPiso = domicilioPiso;
+	}
+
+	public String getDomicilioDpto() {
+		return domicilioDpto;
+	}
+
+	public void setDomicilioDpto(String domicilioDpto) {
+		this.domicilioDpto = domicilioDpto;
 	}
 
 	public ArrayList<LineaDeVenta> getLineas() {

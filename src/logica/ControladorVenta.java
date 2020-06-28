@@ -16,4 +16,9 @@ DatosVenta datos = new DatosVenta();
 		return datos.buscarTodos();
 	}
 
+	public Venta buscarVentaDetallada(int idCompra)throws SQLException, Excepcion {
+		datos = new DatosVenta();
+		return datos.buscarVentaDetallada(idCompra);
+	}
+	
 }

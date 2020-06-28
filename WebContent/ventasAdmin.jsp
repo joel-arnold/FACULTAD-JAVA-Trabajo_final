@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
 	<jsp:include page="vistas/general/referenciasEncabezado.jsp"></jsp:include>
-    <title>Productos</title>
-    <script type="text/javascript" src="vistas/ventas/ventas.Controlador.js"></script>
+    <title>Ventas</title>
   </head>
   
   <body class="bg-light">
