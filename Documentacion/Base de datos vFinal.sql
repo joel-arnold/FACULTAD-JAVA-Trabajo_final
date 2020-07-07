@@ -29,7 +29,7 @@ CREATE TABLE `categoria_producto` (
   `nombre` varchar(45) NOT NULL,
   `descripcion` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `clientes` (
   KEY `usuario_idx` (`usuario`),
   CONSTRAINT `tipo_cliente` FOREIGN KEY (`tipo_cliente`) REFERENCES `tipo_cliente` (`id`),
   CONSTRAINT `usuario` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,7 +77,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (26,'Nombre','Apellido','DNI','33620222','Uriarte','789','1','3','3415325544','cliente@hotmail.com',1,24),(29,'Otro','Cliente','DNI','33333333','Calle','123','1','1','(0341) 4371799','otro@cliente.com.ar',1,27),(31,'Joel','Arnold','DNI','33.720.429','Uriarte','789','1','3','3415325530','joel.arnold.ar@gmail.com',1,29),(32,'Cosme','Fulanito','DNI','12345678','Calle Falsa','123','','','123456789','maria-monza@hotmail.com',1,30);
+INSERT INTO `clientes` VALUES (26,'Nombre','Apellido','DNI','33620222','Cale','1222','6','8','3415325544','cliente@hotmail.com',1,24),(29,'Otro','Cliente','DNI','33333333','Calle','123','1','1','(0341) 4371799','otro@cliente.com.ar',1,27),(31,'Joel','Arnold','DNI','14545455','Uriarte','877','2','3','3415555555','joel.arnold.ar@gmail.com',1,29),(32,'Cosme','Fulanito','DNI','12345678','Calle Falsa','123','','','123456789','asdsadsadsa@hotmail.com',1,30),(33,'Juan','Perez','DNI','33333333','Oscuridad','tanteo','9','b','4333333','juan@perez.com',1,31);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +94,7 @@ CREATE TABLE `compra_cliente` (
   `total` double NOT NULL,
   `cliente` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `compra_cliente` (
 
 LOCK TABLES `compra_cliente` WRITE;
 /*!40000 ALTER TABLE `compra_cliente` DISABLE KEYS */;
-INSERT INTO `compra_cliente` VALUES (78,'01-06-2020',1400,31),(79,'01-06-2020',4409,31),(80,'02-06-2020',4627,31),(81,'02-06-2020',6873,31),(82,'02-06-2020',1605,31),(83,'02-06-2020',7180,31),(84,'02-06-2020',4300,31),(85,'02-06-2020',900,31);
+INSERT INTO `compra_cliente` VALUES (91,'08-06-2020',375,31),(92,'08-06-2020',700,31),(93,'09-06-2020',855,31),(94,'09-06-2020',2502,31),(95,'16-06-2020',950,26),(96,'19-06-2020',2365,31),(97,'26-06-2020',1100,31),(98,'27-06-2020',2722,31),(99,'27-06-2020',7186,32),(100,'12-08-2020',1660,32),(101,'03-07-2020',12000,31),(103,'07-07-2020',1950,31),(104,'07-07-2020',150,31),(105,'07-07-2020',325,31);
 /*!40000 ALTER TABLE `compra_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +160,7 @@ CREATE TABLE `linea_compra_cliente` (
   KEY `idCompra_idx` (`idCompra`),
   KEY `idProducto_idx` (`idProducto`),
   CONSTRAINT `idCompra` FOREIGN KEY (`idCompra`) REFERENCES `compra_cliente` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=157 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +169,7 @@ CREATE TABLE `linea_compra_cliente` (
 
 LOCK TABLES `linea_compra_cliente` WRITE;
 /*!40000 ALTER TABLE `linea_compra_cliente` DISABLE KEYS */;
-INSERT INTO `linea_compra_cliente` VALUES (123,78,5,8),(124,79,6,9),(125,79,11,2),(126,79,1,7),(127,79,13,2),(128,80,9,1),(129,80,5,2),(130,80,8,3),(131,80,6,4),(132,80,1,5),(133,80,11,6),(134,81,5,6),(135,81,8,6),(136,81,11,9),(137,81,7,8),(138,81,13,6),(139,82,6,3),(140,82,1,1),(141,82,8,4),(142,83,7,6),(143,83,13,2),(144,83,10,6),(145,83,11,5),(146,83,8,4),(147,83,5,1),(148,84,9,4),(149,84,13,12),(150,84,5,1),(151,84,8,1),(152,84,6,1),(153,84,7,1),(154,84,11,5),(155,85,9,1),(156,85,8,3);
+INSERT INTO `linea_compra_cliente` VALUES (169,91,8,1),(170,91,5,1),(171,92,9,1),(172,92,8,2),(173,93,7,1),(174,93,5,1),(175,94,1,1),(176,94,7,2),(177,94,5,2),(178,94,6,1),(179,94,11,1),(180,94,13,1),(181,95,1,2),(182,95,13,2),(183,96,6,4),(184,96,5,4),(185,96,1,3),(186,97,6,5),(187,97,5,2),(188,98,6,2),(189,98,1,4),(190,98,11,6),(191,99,1,5),(192,99,5,5),(193,99,11,8),(194,99,7,8),(195,99,8,4),(196,100,5,2),(197,100,6,4),(198,100,1,2),(199,101,7,17),(200,101,1,15),(201,101,6,7),(202,101,5,3),(205,103,5,1),(206,103,1,5),(207,104,6,1),(208,105,5,1),(209,105,6,1);
 /*!40000 ALTER TABLE `linea_compra_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,7 +193,7 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id`),
   KEY `categoria_idx` (`categoria`),
   CONSTRAINT `categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria_producto` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -202,7 +202,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'99','Avy','Alimento balanceado pajaritos',5,'gr',355,4,'bolsa_aves.jpeg'),(5,'91','Raza','Alimento para perros',1,'kg',175,1,'bolsa_perros.png'),(6,'90','Gati','Alimento para gatos',0.5,'kg',150,2,'bolsa_gatos.jpg'),(7,'92','Pajarito','Balanceado para pajaritos',2,'kg',300,4,'bolsa_aves.jpeg'),(8,'93','Doggy','Alimento para perros',10,'kg',200,1,'bolsa_perros.png'),(9,'94','Eukanuba','Alimento para perros',15,'kg',300,1,'bolsa_perros.png'),(10,'101','Birdy','Alimento para aves',2,'kg',555,4,'bolsa_aves.jpeg'),(11,'142','Pipetita para gatos','Pipeta para gatos pulgosos',1,'litro',167,5,'caja_pipeta.jpg'),(13,'143','Pipeta para perros','Pipeta para perros pulgosos',1,'litro',120,5,'caja_pipeta.jpg');
+INSERT INTO `productos` VALUES (1,'99','Avy','Alimento balanceado pajaritos',5,'gr',355,4,'bolsa_aves.jpeg'),(5,'91','Raza','Alimento para perros',1,'kg',175,1,'bolsa_perros.png'),(6,'90','Gati','Alimento para gatos',1,'kg',150,2,'bolsa_gatos.jpg'),(7,'92','Pajarito','Balanceado para pajaritos',2,'kg',300,4,'bolsa_aves.jpeg'),(8,'93','Doggy','Alimento para perros',11,'kg',200,1,'bolsa_perros.png'),(9,'94','Eukanuba','Alimento para perros',15,'kg',300,1,'bolsa_perros.png'),(11,'142','Pipetita gatos','Pipeta para gatos pulgosos',1,'litro',167,5,'caja_pipeta.jpg'),(13,'143','Pipeta perros','Pipeta para perros pulgosos',1,'litro',120,5,'caja_pipeta.jpg');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,7 +224,7 @@ CREATE TABLE `proveedores` (
   `correoElectronico` varchar(100) DEFAULT NULL,
   `telefono` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +249,7 @@ CREATE TABLE `tipo_cliente` (
   `descripcion` varchar(75) NOT NULL,
   `porcentajeDescuento` double NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +258,7 @@ CREATE TABLE `tipo_cliente` (
 
 LOCK TABLES `tipo_cliente` WRITE;
 /*!40000 ALTER TABLE `tipo_cliente` DISABLE KEYS */;
-INSERT INTO `tipo_cliente` VALUES (1,'Común',3),(3,'Super especial',2);
+INSERT INTO `tipo_cliente` VALUES (1,'Común',5),(32,'Super',10),(33,'Especial',15),(34,'Super especial',20);
 /*!40000 ALTER TABLE `tipo_cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -275,7 +275,7 @@ CREATE TABLE `usuarios` (
   `contrasena` varchar(100) NOT NULL,
   `privilegio` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -284,7 +284,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (16,'empleado','c4ca4238a0b923820dcc509a6f75849b','EMPLEADO'),(18,'ameca','c4ca4238a0b923820dcc509a6f75849b','SUPERUSUARIO'),(24,'cliente','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(25,'admin','c4ca4238a0b923820dcc509a6f75849b','ADMINISTRADOR'),(26,'susuario','c4ca4238a0b923820dcc509a6f75849b','SUPERUSUARIO'),(27,'ocliente','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(29,'jarnold','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(30,'CosmeFulanito','202cb962ac59075b964b07152d234b70','CLIENTE');
+INSERT INTO `usuarios` VALUES (16,'empleado','c4ca4238a0b923820dcc509a6f75849b','EMPLEADO'),(18,'ameca','c4ca4238a0b923820dcc509a6f75849b','SUPERUSUARIO'),(24,'cliente','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(25,'admin','c4ca4238a0b923820dcc509a6f75849b','ADMINISTRADOR'),(26,'susuario','c4ca4238a0b923820dcc509a6f75849b','SUPERUSUARIO'),(27,'ocliente','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(29,'jarnold','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(30,'CosmeFulanito','c4ca4238a0b923820dcc509a6f75849b','CLIENTE'),(31,'juanperez','a94652aa97c7211ba8954dd15a3cf838','CLIENTE');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -297,4 +297,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-04 20:36:21
+-- Dump completed on 2020-07-07 12:02:26

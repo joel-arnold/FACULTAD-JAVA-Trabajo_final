@@ -1,0 +1,6 @@
+https://github.com/joel-arnold/la_forrajeria_de_cesar.git
+
+NOTA:
+******
+Adentro del repositorio está todo lo necesario para levantarlo en cualquier PC: el código fuente, las librerías y la base de datos (MySQL).
+Solo es necesario descargar el Eclipse, configurar las librerías y e importar la BD.
